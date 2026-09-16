@@ -448,11 +448,11 @@ window.Quarto = {
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#de-la-question-aux-données" id="toc-de-la-question-aux-données" class="nav-link active" data-scroll-target="#de-la-question-aux-données">De la question aux données</a></li>
-  <li><a href="#statistiques-univariées" id="toc-statistiques-univariées" class="nav-link" data-scroll-target="#statistiques-univariées">Statistiques univariées</a></li>
-  <li><a href="#statistiques-bivariées" id="toc-statistiques-bivariées" class="nav-link" data-scroll-target="#statistiques-bivariées">Statistiques bivariées</a></li>
-  <li><a href="#tableau-de-statistiques-et-application-au-projet" id="toc-tableau-de-statistiques-et-application-au-projet" class="nav-link" data-scroll-target="#tableau-de-statistiques-et-application-au-projet">Tableau de statistiques et application au projet</a></li>
-  <li><a href="#rendu" id="toc-rendu" class="nav-link" data-scroll-target="#rendu">Rendu</a></li>
+  <li><a href="#de-la-question-aux-données" id="toc-de-la-question-aux-données" class="nav-link active" data-scroll-target="#de-la-question-aux-données">1. De la question aux données</a></li>
+  <li><a href="#statistiques-univariées" id="toc-statistiques-univariées" class="nav-link" data-scroll-target="#statistiques-univariées">2. Statistiques univariées</a></li>
+  <li><a href="#statistiques-bivariées" id="toc-statistiques-bivariées" class="nav-link" data-scroll-target="#statistiques-bivariées">3. Statistiques bivariées</a></li>
+  <li><a href="#tableau-de-statistiques-et-application-au-projet" id="toc-tableau-de-statistiques-et-application-au-projet" class="nav-link" data-scroll-target="#tableau-de-statistiques-et-application-au-projet">4. Tableau de statistiques et application au projet</a></li>
+  <li><a href="#rendu" id="toc-rendu" class="nav-link" data-scroll-target="#rendu">5. Rendu</a></li>
   </ul>
 </nav>
     </div>
@@ -490,7 +490,7 @@ window.Quarto = {
 <p>Toute étude empirique commence par une description soignée des données : qui est observé, quelles variables sont disponibles, quelle est leur qualité, et quelles relations apparaissent entre elles. Ce TP suit cette démarche sur une enquête de l’Insee, puis l’applique aux données de votre projet.</p>
 <p>Comme aux TP précédents, créer un projet RStudio <code>TP4</code> avec les sous-dossiers <code>code</code>, <code>data</code> et <code>figures</code>, et rédiger les réponses dans <code>code/TP4.qmd</code>.</p>
 <section id="de-la-question-aux-données" class="level2">
-<h2 class="anchored" data-anchor-id="de-la-question-aux-données">De la question aux données</h2>
+<h2 class="anchored" data-anchor-id="de-la-question-aux-données">1. De la question aux données</h2>
 <p>On cherche à répondre à deux questions : <strong>qui pratique une activité sportive ?</strong> et <strong>qui regarde le plus la télévision ?</strong> On utilise le jeu de données <code>hdv2003</code> du package <code>questionr</code>, un extrait de l’enquête <em>Histoire de vie</em> réalisée par l’Insee en 2003 auprès de 2 000 personnes.</p>
 <table class="caption-top table">
 <colgroup>
@@ -552,7 +552,7 @@ window.Quarto = {
 </ol>
 </section>
 <section id="statistiques-univariées" class="level2">
-<h2 class="anchored" data-anchor-id="statistiques-univariées">Statistiques univariées</h2>
+<h2 class="anchored" data-anchor-id="statistiques-univariées">2. Statistiques univariées</h2>
 <p>On décrit chaque variable séparément : tendance centrale (moyenne, médiane) et dispersion (écart-type, quantiles) pour les variables quantitatives, tableau de fréquences pour les variables qualitatives.</p>
 <ol type="i">
 <li><p>Calculer la moyenne, la médiane, l’écart-type, le minimum et le maximum de <code>age</code> et de <code>heures.tv</code>. Afficher les déciles de <code>heures.tv</code> avec <code>quantile()</code>.</p></li>
@@ -563,7 +563,7 @@ window.Quarto = {
 </ol>
 </section>
 <section id="statistiques-bivariées" class="level2">
-<h2 class="anchored" data-anchor-id="statistiques-bivariées">Statistiques bivariées</h2>
+<h2 class="anchored" data-anchor-id="statistiques-bivariées">3. Statistiques bivariées</h2>
 <p>On étudie maintenant les relations entre deux variables. L’outil dépend de leur nature : tableau croisé et test du <span class="math inline">\(\chi^2\)</span> pour deux variables qualitatives, moyennes par groupe et test de Student pour une variable quantitative et une variable qualitative, corrélation pour deux variables quantitatives.</p>
 <ol type="i">
 <li><p>Construire le tableau croisé du niveau d’études et de la pratique sportive, avec les pourcentages en ligne : pour chaque niveau d’études, quelle part des personnes pratique un sport ? Utiliser <code>count()</code>, <code>group_by()</code> et <code>mutate()</code>. Commenter.</p></li>
@@ -575,7 +575,7 @@ window.Quarto = {
 </ol>
 </section>
 <section id="tableau-de-statistiques-et-application-au-projet" class="level2">
-<h2 class="anchored" data-anchor-id="tableau-de-statistiques-et-application-au-projet">Tableau de statistiques et application au projet</h2>
+<h2 class="anchored" data-anchor-id="tableau-de-statistiques-et-application-au-projet">4. Tableau de statistiques et application au projet</h2>
 <p>Un rapport présente les statistiques descriptives dans des tableaux soignés plutôt que dans des sorties brutes de R. Dans un document Quarto, un tableau produit par <code>stargazer()</code> s’affiche avec l’argument <code>type = "html"</code> et l’option de chunk <code>#| results: asis</code>.</p>
 <ol type="i">
 <li><p>Produire un tableau de statistiques descriptives de <code>age</code>, <code>heures.tv</code> et <code>freres.soeurs</code> avec <code>stargazer()</code>. La fonction attend un <code>data.frame</code> : utiliser <code>as.data.frame()</code>. Tester <code>type = "text"</code> dans la console, puis <code>type = "html"</code> dans le document compilé.</p></li>
@@ -590,7 +590,7 @@ window.Quarto = {
 </ol>
 </section>
 <section id="rendu" class="level2">
-<h2 class="anchored" data-anchor-id="rendu">Rendu</h2>
+<h2 class="anchored" data-anchor-id="rendu">5. Rendu</h2>
 <p>Compiler le document complet. Il doit se compiler sans erreur après un redémarrage de R (<code>Session &gt; Restart R</code>). Déposer le fichier <code>TP4.html</code> sur CEL.</p>
 
 

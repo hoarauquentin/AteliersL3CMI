@@ -419,11 +419,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#la-grammaire-des-graphiques" id="toc-la-grammaire-des-graphiques" class="nav-link active" data-scroll-target="#la-grammaire-des-graphiques">La grammaire des graphiques</a></li>
-  <li><a href="#séries-temporelles" id="toc-séries-temporelles" class="nav-link" data-scroll-target="#séries-temporelles">Séries temporelles</a></li>
-  <li><a href="#bonnes-pratiques-de-visualisation" id="toc-bonnes-pratiques-de-visualisation" class="nav-link" data-scroll-target="#bonnes-pratiques-de-visualisation">Bonnes pratiques de visualisation</a></li>
-  <li><a href="#application-les-émissions-de-co2" id="toc-application-les-émissions-de-co2" class="nav-link" data-scroll-target="#application-les-émissions-de-co2">Application : les émissions de CO2</a></li>
-  <li><a href="#rendu" id="toc-rendu" class="nav-link" data-scroll-target="#rendu">Rendu</a></li>
+  <li><a href="#la-grammaire-des-graphiques" id="toc-la-grammaire-des-graphiques" class="nav-link active" data-scroll-target="#la-grammaire-des-graphiques">1. La grammaire des graphiques</a></li>
+  <li><a href="#séries-temporelles" id="toc-séries-temporelles" class="nav-link" data-scroll-target="#séries-temporelles">2. Séries temporelles</a></li>
+  <li><a href="#bonnes-pratiques-de-visualisation" id="toc-bonnes-pratiques-de-visualisation" class="nav-link" data-scroll-target="#bonnes-pratiques-de-visualisation">3. Bonnes pratiques de visualisation</a></li>
+  <li><a href="#application-les-émissions-de-co2" id="toc-application-les-émissions-de-co2" class="nav-link" data-scroll-target="#application-les-émissions-de-co2">4. Application : les émissions de CO2</a></li>
+  <li><a href="#rendu" id="toc-rendu" class="nav-link" data-scroll-target="#rendu">5. Rendu</a></li>
   </ul>
 </nav>
     </div>
@@ -461,7 +461,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Ce TP présente la construction de graphiques avec le package <code>ggplot2</code> : la logique de la grammaire des graphiques, les séries temporelles, les bonnes pratiques de visualisation, puis une application aux émissions de CO2.</p>
 <p>Comme aux TP précédents, créer un projet RStudio <code>TP3</code> avec les sous-dossiers <code>code</code>, <code>data</code> et <code>figures</code>, et rédiger les réponses dans <code>code/TP3.qmd</code>. Pour aller plus loin : le <a href="https://juba.github.io/tidyverse/08-ggplot2.html">chapitre sur <code>ggplot2</code></a> du tutoriel de Julien Barnier et le livre <a href="https://clauswilke.com/dataviz/">Fundamentals of Data Visualization</a> de Claus Wilke.</p>
 <section id="la-grammaire-des-graphiques" class="level2">
-<h2 class="anchored" data-anchor-id="la-grammaire-des-graphiques">La grammaire des graphiques</h2>
+<h2 class="anchored" data-anchor-id="la-grammaire-des-graphiques">1. La grammaire des graphiques</h2>
 <p>Un graphique <code>ggplot2</code> se construit par couches, ajoutées avec <code>+</code> :</p>
 <ul>
 <li><code>ggplot(data)</code> indique le tableau de données ;</li>
@@ -533,7 +533,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 <section id="séries-temporelles" class="level2">
-<h2 class="anchored" data-anchor-id="séries-temporelles">Séries temporelles</h2>
+<h2 class="anchored" data-anchor-id="séries-temporelles">2. Séries temporelles</h2>
 <p>On utilise le jeu de données <code>economics</code>, fourni avec <code>ggplot2</code>, qui contient des séries mensuelles de l’économie américaine de 1967 à 2015.</p>
 <table class="caption-top table">
 <colgroup>
@@ -575,7 +575,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 <section id="bonnes-pratiques-de-visualisation" class="level2">
-<h2 class="anchored" data-anchor-id="bonnes-pratiques-de-visualisation">Bonnes pratiques de visualisation</h2>
+<h2 class="anchored" data-anchor-id="bonnes-pratiques-de-visualisation">3. Bonnes pratiques de visualisation</h2>
 <p>Un bon graphique transmet un message clair sans effort de lecture. Quelques règles, tirées du livre de Claus Wilke :</p>
 <ul>
 <li>un titre informatif, des axes avec leurs unités et la source des données ;</li>
@@ -600,7 +600,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 <section id="application-les-émissions-de-co2" class="level2">
-<h2 class="anchored" data-anchor-id="application-les-émissions-de-co2">Application : les émissions de CO2</h2>
+<h2 class="anchored" data-anchor-id="application-les-émissions-de-co2">4. Application : les émissions de CO2</h2>
 <p>On reprend les données d’Our World in Data utilisées au TP2 (voir le tableau des variables du TP2).</p>
 <ol type="i">
 <li><p>Copier dans le dossier <code>data</code> les fichiers <code>owid-co2-data.csv</code> et <code>continents.csv</code> téléchargés au TP2. Les importer et les joindre comme au TP2, en ne conservant que les pays rattachés à un continent, mais sans restreindre la période. Stocker le résultat dans un tableau <code>co2_pays</code>.</p></li>
@@ -612,7 +612,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 <section id="rendu" class="level2">
-<h2 class="anchored" data-anchor-id="rendu">Rendu</h2>
+<h2 class="anchored" data-anchor-id="rendu">5. Rendu</h2>
 <p>Compiler le document complet. Il doit se compiler sans erreur après un redémarrage de R (<code>Session &gt; Restart R</code>). Déposer le fichier <code>TP3.html</code> sur CEL.</p>
 
 

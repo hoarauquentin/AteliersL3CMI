@@ -448,11 +448,11 @@ window.Quarto = {
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#régression-simple" id="toc-régression-simple" class="nav-link active" data-scroll-target="#régression-simple">Régression simple</a></li>
-  <li><a href="#régression-multiple" id="toc-régression-multiple" class="nav-link" data-scroll-target="#régression-multiple">Régression multiple</a></li>
-  <li><a href="#forme-fonctionnelle-et-variables-qualitatives" id="toc-forme-fonctionnelle-et-variables-qualitatives" class="nav-link" data-scroll-target="#forme-fonctionnelle-et-variables-qualitatives">Forme fonctionnelle et variables qualitatives</a></li>
-  <li><a href="#application-la-courbe-de-kuznets-environnementale" id="toc-application-la-courbe-de-kuznets-environnementale" class="nav-link" data-scroll-target="#application-la-courbe-de-kuznets-environnementale">Application : la courbe de Kuznets environnementale</a></li>
-  <li><a href="#rendu" id="toc-rendu" class="nav-link" data-scroll-target="#rendu">Rendu</a></li>
+  <li><a href="#régression-simple" id="toc-régression-simple" class="nav-link active" data-scroll-target="#régression-simple">1. Régression simple</a></li>
+  <li><a href="#régression-multiple" id="toc-régression-multiple" class="nav-link" data-scroll-target="#régression-multiple">2. Régression multiple</a></li>
+  <li><a href="#forme-fonctionnelle-et-variables-qualitatives" id="toc-forme-fonctionnelle-et-variables-qualitatives" class="nav-link" data-scroll-target="#forme-fonctionnelle-et-variables-qualitatives">3. Forme fonctionnelle et variables qualitatives</a></li>
+  <li><a href="#application-la-courbe-de-kuznets-environnementale" id="toc-application-la-courbe-de-kuznets-environnementale" class="nav-link" data-scroll-target="#application-la-courbe-de-kuznets-environnementale">4. Application : la courbe de Kuznets environnementale</a></li>
+  <li><a href="#rendu" id="toc-rendu" class="nav-link" data-scroll-target="#rendu">5. Rendu</a></li>
   </ul>
 </nav>
     </div>
@@ -491,7 +491,7 @@ window.Quarto = {
 <p>Ce TP présente l’estimation et l’interprétation des modèles de régression linéaire par les moindres carrés ordinaires (MCO) : régression simple, régression multiple, forme fonctionnelle et variables qualitatives, puis une application à la relation entre émissions de CO2 et niveau de vie.</p>
 <p>Comme aux TP précédents, créer un projet RStudio <code>TP5</code> avec les sous-dossiers <code>code</code>, <code>data</code> et <code>figures</code>, et rédiger les réponses dans <code>code/TP5.qmd</code>. Les régressions sont estimées avec la fonction <code>feols()</code> du package <code>fixest</code>, et comparées dans des tableaux produits par <code>etable()</code>.</p>
 <section id="régression-simple" class="level2">
-<h2 class="anchored" data-anchor-id="régression-simple">Régression simple</h2>
+<h2 class="anchored" data-anchor-id="régression-simple">1. Régression simple</h2>
 <p>On étudie le rendement de l’éducation à partir du jeu de données <code>wage1</code> du package <code>wooldridge</code> : 526 salariés américains interrogés en 1976.</p>
 <table class="caption-top table">
 <colgroup>
@@ -542,7 +542,7 @@ window.Quarto = {
 </ol>
 </section>
 <section id="régression-multiple" class="level2">
-<h2 class="anchored" data-anchor-id="régression-multiple">Régression multiple</h2>
+<h2 class="anchored" data-anchor-id="régression-multiple">2. Régression multiple</h2>
 <p>La régression multiple permet d’isoler l’effet d’une variable en contrôlant les autres : chaque coefficient s’interprète « toutes choses égales par ailleurs ». Si une variable qui influence <span class="math inline">\(y\)</span> et qui est corrélée à une variable explicative est omise, le coefficient de cette dernière est biaisé : c’est le <strong>biais de variable omise</strong>.</p>
 <p><span class="math display">\[wage_i = \beta_0 + \beta_1 educ_i + \beta_2 exper_i + \beta_3 tenure_i + u_i\]</span></p>
 <ol type="i">
@@ -554,7 +554,7 @@ window.Quarto = {
 </ol>
 </section>
 <section id="forme-fonctionnelle-et-variables-qualitatives" class="level2">
-<h2 class="anchored" data-anchor-id="forme-fonctionnelle-et-variables-qualitatives">Forme fonctionnelle et variables qualitatives</h2>
+<h2 class="anchored" data-anchor-id="forme-fonctionnelle-et-variables-qualitatives">3. Forme fonctionnelle et variables qualitatives</h2>
 <p>Le modèle linéaire peut intégrer des relations non linéaires grâce à des transformations des variables :</p>
 <table class="caption-top table">
 <colgroup>
@@ -598,7 +598,7 @@ window.Quarto = {
 </ol>
 </section>
 <section id="application-la-courbe-de-kuznets-environnementale" class="level2">
-<h2 class="anchored" data-anchor-id="application-la-courbe-de-kuznets-environnementale">Application : la courbe de Kuznets environnementale</h2>
+<h2 class="anchored" data-anchor-id="application-la-courbe-de-kuznets-environnementale">4. Application : la courbe de Kuznets environnementale</h2>
 <p>Selon l’hypothèse de la <strong>courbe de Kuznets environnementale</strong> (Grossman et Krueger, 1995), la pollution augmente avec le niveau de vie aux premiers stades du développement, puis diminue au-delà d’un certain revenu, grâce aux changements de structure productive, aux technologies plus propres et à la demande de qualité environnementale. La relation entre émissions et revenu prendrait la forme d’un U inversé :</p>
 <p><span class="math display">\[co2\_hab_i = \beta_0 + \beta_1 pib\_hab_i + \beta_2 pib\_hab_i^2 + u_i\]</span></p>
 <p>avec <span class="math inline">\(\beta_1 &gt; 0\)</span> et <span class="math inline">\(\beta_2 &lt; 0\)</span>. Le revenu à partir duquel les émissions diminuent est alors <span class="math inline">\(pib^* = -\beta_1 / (2 \beta_2)\)</span>. On teste cette hypothèse en coupe transversale sur les pays du monde en 2022, avec les données d’Our World in Data utilisées aux TP2 et TP3.</p>
@@ -612,7 +612,7 @@ window.Quarto = {
 </ol>
 </section>
 <section id="rendu" class="level2">
-<h2 class="anchored" data-anchor-id="rendu">Rendu</h2>
+<h2 class="anchored" data-anchor-id="rendu">5. Rendu</h2>
 <p>Compiler le document complet. Il doit se compiler sans erreur après un redémarrage de R (<code>Session &gt; Restart R</code>). Déposer le fichier <code>TP5.html</code> sur CEL.</p>
 
 

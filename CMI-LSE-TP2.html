@@ -419,11 +419,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#les-verbes-de-base-de-dplyr" id="toc-les-verbes-de-base-de-dplyr" class="nav-link active" data-scroll-target="#les-verbes-de-base-de-dplyr">Les verbes de base de <code>dplyr</code></a></li>
-  <li><a href="#importer-et-explorer-des-données" id="toc-importer-et-explorer-des-données" class="nav-link" data-scroll-target="#importer-et-explorer-des-données">Importer et explorer des données</a></li>
-  <li><a href="#agréger-des-données" id="toc-agréger-des-données" class="nav-link" data-scroll-target="#agréger-des-données">Agréger des données</a></li>
-  <li><a href="#joindre-et-remodeler-des-tableaux" id="toc-joindre-et-remodeler-des-tableaux" class="nav-link" data-scroll-target="#joindre-et-remodeler-des-tableaux">Joindre et remodeler des tableaux</a></li>
-  <li><a href="#rendu" id="toc-rendu" class="nav-link" data-scroll-target="#rendu">Rendu</a></li>
+  <li><a href="#les-verbes-de-base-de-dplyr" id="toc-les-verbes-de-base-de-dplyr" class="nav-link active" data-scroll-target="#les-verbes-de-base-de-dplyr">1. Les verbes de base de <code>dplyr</code></a></li>
+  <li><a href="#importer-et-explorer-des-données" id="toc-importer-et-explorer-des-données" class="nav-link" data-scroll-target="#importer-et-explorer-des-données">2. Importer et explorer des données</a></li>
+  <li><a href="#agréger-des-données" id="toc-agréger-des-données" class="nav-link" data-scroll-target="#agréger-des-données">3. Agréger des données</a></li>
+  <li><a href="#joindre-et-remodeler-des-tableaux" id="toc-joindre-et-remodeler-des-tableaux" class="nav-link" data-scroll-target="#joindre-et-remodeler-des-tableaux">4. Joindre et remodeler des tableaux</a></li>
+  <li><a href="#rendu" id="toc-rendu" class="nav-link" data-scroll-target="#rendu">5. Rendu</a></li>
   </ul>
 </nav>
     </div>
@@ -460,7 +460,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Ce TP présente les principales opérations sur les tableaux de données avec les packages <code>dplyr</code> et <code>tidyr</code> du <code>tidyverse</code> : sélectionner, filtrer, trier, créer des variables, agréger, joindre et remodeler. On travaille d’abord sur les vols au départ de New York, puis sur les émissions de CO2 des pays du monde.</p>
 <p>Comme au TP1, créer un projet RStudio <code>TP2</code> avec les sous-dossiers <code>code</code>, <code>data</code> et <code>figures</code>, et rédiger les réponses dans le document <code>code/TP2.qmd</code>. Le <a href="https://juba.github.io/tidyverse/10-dplyr.html">chapitre sur <code>dplyr</code></a> du tutoriel de Julien Barnier est une bonne référence.</p>
 <section id="les-verbes-de-base-de-dplyr" class="level2">
-<h2 class="anchored" data-anchor-id="les-verbes-de-base-de-dplyr">Les verbes de base de <code>dplyr</code></h2>
+<h2 class="anchored" data-anchor-id="les-verbes-de-base-de-dplyr">1. Les verbes de base de <code>dplyr</code></h2>
 <p>Le package <code>nycflights13</code> contient plusieurs tables sur les vols au départ des trois aéroports de New York en 2013.</p>
 <table class="caption-top table">
 <colgroup>
@@ -515,7 +515,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 <section id="importer-et-explorer-des-données" class="level2">
-<h2 class="anchored" data-anchor-id="importer-et-explorer-des-données">Importer et explorer des données</h2>
+<h2 class="anchored" data-anchor-id="importer-et-explorer-des-données">2. Importer et explorer des données</h2>
 <p>On utilise la base de données sur les émissions de CO2 de <a href="https://github.com/owid/co2-data">Our World in Data</a>, qui couvre tous les pays depuis 1750. Les variables utilisées sont les suivantes :</p>
 <table class="caption-top table">
 <colgroup>
@@ -574,7 +574,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 <section id="agréger-des-données" class="level2">
-<h2 class="anchored" data-anchor-id="agréger-des-données">Agréger des données</h2>
+<h2 class="anchored" data-anchor-id="agréger-des-données">3. Agréger des données</h2>
 <p>Pour résumer un tableau par groupe, on combine <code>group_by()</code>, qui définit les groupes, et <code>summarise()</code>, qui calcule une statistique par groupe. La fonction <code>count()</code> compte le nombre de lignes par groupe.</p>
 <ol type="i">
 <li><p>Compter le nombre de vols par mois avec <code>count()</code>, puis trier le résultat par nombre de vols croissant. Quel est le mois le plus chargé ?</p></li>
@@ -586,7 +586,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 <section id="joindre-et-remodeler-des-tableaux" class="level2">
-<h2 class="anchored" data-anchor-id="joindre-et-remodeler-des-tableaux">Joindre et remodeler des tableaux</h2>
+<h2 class="anchored" data-anchor-id="joindre-et-remodeler-des-tableaux">4. Joindre et remodeler des tableaux</h2>
 <p>Une jointure associe les lignes de deux tableaux à partir d’une variable commune, appelée clé. <code>left_join(x, y)</code> conserve toutes les lignes de <code>x</code> et leur ajoute les colonnes de <code>y</code> ; <code>anti_join(x, y)</code> renvoie les lignes de <code>x</code> sans correspondance dans <code>y</code>.</p>
 <p>Un tableau est au format <strong>long</strong> lorsque chaque ligne est une observation (un pays une année), et au format <strong>large</strong> lorsque les modalités d’une variable sont en colonnes (une colonne par année). On passe de l’un à l’autre avec <code>pivot_wider()</code> et <code>pivot_longer()</code>.</p>
 <ol type="i">
@@ -604,7 +604,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 <section id="rendu" class="level2">
-<h2 class="anchored" data-anchor-id="rendu">Rendu</h2>
+<h2 class="anchored" data-anchor-id="rendu">5. Rendu</h2>
 <p>Compiler le document complet. Il doit se compiler sans erreur après un redémarrage de R (<code>Session &gt; Restart R</code>). Déposer le fichier <code>TP2.html</code> sur CEL.</p>
 
 

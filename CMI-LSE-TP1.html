@@ -448,15 +448,15 @@ window.Quarto = {
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#projet-rstudio-et-quarto" id="toc-projet-rstudio-et-quarto" class="nav-link active" data-scroll-target="#projet-rstudio-et-quarto">Projet RStudio et Quarto</a>
+  <li><a href="#projet-rstudio-et-quarto" id="toc-projet-rstudio-et-quarto" class="nav-link active" data-scroll-target="#projet-rstudio-et-quarto">1. Projet RStudio et Quarto</a>
   <ul class="collapse">
-  <li><a href="#organiser-un-projet" id="toc-organiser-un-projet" class="nav-link" data-scroll-target="#organiser-un-projet">Organiser un projet</a></li>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
+  <li><a href="#organiser-un-projet" id="toc-organiser-un-projet" class="nav-link" data-scroll-target="#organiser-un-projet">1.1 Organiser un projet</a></li>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">1.2 Quarto</a></li>
   </ul></li>
-  <li><a href="#vecteurs" id="toc-vecteurs" class="nav-link" data-scroll-target="#vecteurs">Vecteurs</a></li>
-  <li><a href="#types-listes-et-tableaux" id="toc-types-listes-et-tableaux" class="nav-link" data-scroll-target="#types-listes-et-tableaux">Types, listes et tableaux</a></li>
-  <li><a href="#packages-aide-et-chaînes-de-caractères" id="toc-packages-aide-et-chaînes-de-caractères" class="nav-link" data-scroll-target="#packages-aide-et-chaînes-de-caractères">Packages, aide et chaînes de caractères</a></li>
-  <li><a href="#rendu" id="toc-rendu" class="nav-link" data-scroll-target="#rendu">Rendu</a></li>
+  <li><a href="#vecteurs" id="toc-vecteurs" class="nav-link" data-scroll-target="#vecteurs">2. Vecteurs</a></li>
+  <li><a href="#types-listes-et-tableaux" id="toc-types-listes-et-tableaux" class="nav-link" data-scroll-target="#types-listes-et-tableaux">3. Types, listes et tableaux</a></li>
+  <li><a href="#packages-aide-et-chaînes-de-caractères" id="toc-packages-aide-et-chaînes-de-caractères" class="nav-link" data-scroll-target="#packages-aide-et-chaînes-de-caractères">4. Packages, aide et chaînes de caractères</a></li>
+  <li><a href="#rendu" id="toc-rendu" class="nav-link" data-scroll-target="#rendu">5. Rendu</a></li>
   </ul>
 </nav>
     </div>
@@ -492,9 +492,9 @@ window.Quarto = {
 <p>Ce TP présente l’environnement de travail utilisé pendant tout le semestre : l’organisation d’un projet, RStudio pour écrire et exécuter du code R, et Quarto pour rédiger des documents qui mêlent texte, code et résultats. Tous les TP suivants seront rendus sous la forme d’un document Quarto compilé en HTML.</p>
 <p>Pour ce TP, cherchez les réponses par vous-même sans assistant IA : utilisez l’aide de R (<code>?nom_de_fonction</code>), un moteur de recherche, ou ce <a href="https://juba.github.io/tidyverse/">tutoriel</a> sur R et le <code>tidyverse</code>.</p>
 <section id="projet-rstudio-et-quarto" class="level2">
-<h2 class="anchored" data-anchor-id="projet-rstudio-et-quarto">Projet RStudio et Quarto</h2>
+<h2 class="anchored" data-anchor-id="projet-rstudio-et-quarto">1. Projet RStudio et Quarto</h2>
 <section id="organiser-un-projet" class="level3">
-<h3 class="anchored" data-anchor-id="organiser-un-projet">Organiser un projet</h3>
+<h3 class="anchored" data-anchor-id="organiser-un-projet">1.1 Organiser un projet</h3>
 <p>Un projet d’analyse de données accumule vite de nombreux fichiers : données, scripts, graphiques, rapport. Quelques règles permettent de s’y retrouver et de rendre le travail reproductible, c’est-à-dire exécutable sur un autre ordinateur sans modification :</p>
 <ul>
 <li><strong>un dossier par projet</strong> (ici, un par TP), qui contient un fichier <code>.Rproj</code>. On ouvre toujours le projet en double-cliquant sur ce fichier : le répertoire de travail est alors la racine du projet ;</li>
@@ -516,7 +516,7 @@ window.Quarto = {
 <p>Lors de la compilation, un document Quarto s’exécute depuis son propre dossier (ici <code>code/</code>) et non depuis la racine du projet. Pour écrire des chemins valables partout, on utilise la fonction <code>here()</code> du package <code>here</code>, qui construit le chemin à partir de la racine du projet : <code>here("data", "co2.csv")</code>.</p>
 </section>
 <section id="quarto" class="level3">
-<h3 class="anchored" data-anchor-id="quarto">Quarto</h3>
+<h3 class="anchored" data-anchor-id="quarto">1.2 Quarto</h3>
 <p>Un document Quarto (extension <code>.qmd</code>) comporte trois éléments :</p>
 <ul>
 <li>un <strong>en-tête YAML</strong>, délimité par <code>---</code>, qui contient les métadonnées du document (titre, auteur, format de sortie) ;</li>
@@ -587,7 +587,7 @@ window.Quarto = {
 </section>
 </section>
 <section id="vecteurs" class="level2">
-<h2 class="anchored" data-anchor-id="vecteurs">Vecteurs</h2>
+<h2 class="anchored" data-anchor-id="vecteurs">2. Vecteurs</h2>
 <p>En R, l’objet de base est le vecteur : une suite de valeurs de même type. On crée un objet avec l’opérateur d’assignation <code>&lt;-</code>.</p>
 <ol type="i">
 <li><p>Créer le vecteur <span class="math inline">\(x = (1, 2, 3, 4, 5)\)</span> et le stocker dans un objet <code>x</code>, de trois façons : avec <code>c()</code>, avec <code>:</code> et avec <code>seq()</code>. Afficher sa classe avec <code>class()</code> et sa longueur avec <code>length()</code>.</p></li>
@@ -622,7 +622,7 @@ window.Quarto = {
 <p>Créer le vecteur <code>co2_hab</code> et nommer ses éléments avec <code>names()</code>. Calculer la moyenne, puis afficher le pays le plus émetteur avec <code>which.max()</code> et les pays dont les émissions dépassent la moyenne. Trier le vecteur par ordre décroissant avec <code>sort()</code>.</p>
 </section>
 <section id="types-listes-et-tableaux" class="level2">
-<h2 class="anchored" data-anchor-id="types-listes-et-tableaux">Types, listes et tableaux</h2>
+<h2 class="anchored" data-anchor-id="types-listes-et-tableaux">3. Types, listes et tableaux</h2>
 <p>Un vecteur ne contient qu’un seul type de valeurs (<code>numeric</code>, <code>character</code>, <code>logical</code>). Une liste peut contenir des objets de types différents. Un tableau de données (<code>data.frame</code> ou <code>tibble</code>) est une liste de vecteurs de même longueur : chaque colonne est une variable, chaque ligne une observation.</p>
 <ol type="i">
 <li><p>Évaluer <code>TRUE + FALSE + TRUE * 4</code>, puis <code>c(1, 4, TRUE)</code> et <code>c(1, 4, TRUE, "bonjour")</code>. Afficher la classe des deux derniers objets. Commenter.</p></li>
@@ -634,7 +634,7 @@ window.Quarto = {
 </ol>
 </section>
 <section id="packages-aide-et-chaînes-de-caractères" class="level2">
-<h2 class="anchored" data-anchor-id="packages-aide-et-chaînes-de-caractères">Packages, aide et chaînes de caractères</h2>
+<h2 class="anchored" data-anchor-id="packages-aide-et-chaînes-de-caractères">4. Packages, aide et chaînes de caractères</h2>
 <p>Les packages étendent les fonctionnalités de R. On installe un package une seule fois avec <code>install.packages()</code>, puis on le charge à chaque session avec <code>library()</code>. Le <code>tidyverse</code> regroupe plusieurs packages, dont <code>stringr</code> pour manipuler les chaînes de caractères.</p>
 <ol type="i">
 <li><p>Installer le package <code>nycflights13</code>, qui sera utilisé au prochain TP, puis le charger. Pourquoi ne faut-il pas laisser <code>install.packages()</code> dans un document Quarto ?</p></li>
@@ -646,7 +646,7 @@ window.Quarto = {
 </ol>
 </section>
 <section id="rendu" class="level2">
-<h2 class="anchored" data-anchor-id="rendu">Rendu</h2>
+<h2 class="anchored" data-anchor-id="rendu">5. Rendu</h2>
 <p>Compiler le document complet. Il doit se compiler sans erreur après un redémarrage de R (<code>Session &gt; Restart R</code>) : cela garantit qu’il ne dépend pas d’objets créés à la main dans la console. Déposer le fichier <code>TP1.html</code> sur CEL.</p>
 
 
