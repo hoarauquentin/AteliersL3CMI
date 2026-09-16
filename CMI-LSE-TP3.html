@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Quentin Hoarau">
 
-<title>Ateliers L3 CMI</title>
+<title>TP3 : Visualiser des données avec ggplot2 – Ateliers L3 CMI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,12 +20,48 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
-<link href="./CMI-BDD.html" rel="next">
+<link href="./CMI-LSE-TP4.html" rel="next">
+<link href="./CMI-LSE-TP2.html" rel="prev">
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -242,7 +277,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Général</a></li><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./CMI-LSE-intro.html">Logiciel Statistique et Econométrique</a></li><li class="breadcrumb-item"><a href="./CMI-LSE-TP3.html">TP3 : Visualiser des données avec <code>ggplot2</code></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -280,7 +315,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -321,7 +356,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./CMI-LSE-TP3.html" class="sidebar-item-text sidebar-link">
+  <a href="./CMI-LSE-TP3.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">TP3 : Visualiser des données avec <code>ggplot2</code></span></a>
   </div>
 </li>
@@ -384,11 +419,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
-  <ul class="collapse">
-  <li><a href="#présentation" id="toc-présentation" class="nav-link" data-scroll-target="#présentation">Présentation</a></li>
-  <li><a href="#notation" id="toc-notation" class="nav-link" data-scroll-target="#notation">Notation</a></li>
-  </ul></li>
+  <li><a href="#la-grammaire-des-graphiques" id="toc-la-grammaire-des-graphiques" class="nav-link active" data-scroll-target="#la-grammaire-des-graphiques">La grammaire des graphiques</a></li>
+  <li><a href="#séries-temporelles" id="toc-séries-temporelles" class="nav-link" data-scroll-target="#séries-temporelles">Séries temporelles</a></li>
+  <li><a href="#bonnes-pratiques-de-visualisation" id="toc-bonnes-pratiques-de-visualisation" class="nav-link" data-scroll-target="#bonnes-pratiques-de-visualisation">Bonnes pratiques de visualisation</a></li>
+  <li><a href="#application-les-émissions-de-co2" id="toc-application-les-émissions-de-co2" class="nav-link" data-scroll-target="#application-les-émissions-de-co2">Application : les émissions de CO2</a></li>
+  <li><a href="#rendu" id="toc-rendu" class="nav-link" data-scroll-target="#rendu">Rendu</a></li>
   </ul>
 </nav>
     </div>
@@ -396,28 +431,16 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Général</a></li><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./CMI-LSE-intro.html">Logiciel Statistique et Econométrique</a></li><li class="breadcrumb-item"><a href="./CMI-LSE-TP3.html">TP3 : Visualiser des données avec <code>ggplot2</code></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Ateliers L3 CMI</h1>
+<h1 class="title">TP3 : Visualiser des données avec <code>ggplot2</code></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Auteur·rice</div>
-    <div class="quarto-title-meta-contents">
-             <p>Quentin Hoarau <a href="mailto:qhoarau@parisnanterre.fr" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Date de publication</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">16 septembre 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -427,38 +450,172 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level1 unnumbered">
-<h1 class="unnumbered">Introduction</h1>
-<section id="présentation" class="level2">
-<h2 class="anchored" data-anchor-id="présentation">Présentation</h2>
-<p>Ce livre contient les supports des trois ateliers spécifiques de la L3 CMI de l’université Paris Nanterre :</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">eval=</span><span class="cn">FALSE</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(questionr)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Ce TP présente la construction de graphiques avec le package <code>ggplot2</code> : la logique de la grammaire des graphiques, les séries temporelles, les bonnes pratiques de visualisation, puis une application aux émissions de CO2.</p>
+<p>Comme aux TP précédents, créer un projet RStudio <code>TP3</code> avec les sous-dossiers <code>code</code>, <code>data</code> et <code>figures</code>, et rédiger les réponses dans <code>code/TP3.qmd</code>. Pour aller plus loin : le <a href="https://juba.github.io/tidyverse/08-ggplot2.html">chapitre sur <code>ggplot2</code></a> du tutoriel de Julien Barnier et le livre <a href="https://clauswilke.com/dataviz/">Fundamentals of Data Visualization</a> de Claus Wilke.</p>
+<section id="la-grammaire-des-graphiques" class="level2">
+<h2 class="anchored" data-anchor-id="la-grammaire-des-graphiques">La grammaire des graphiques</h2>
+<p>Un graphique <code>ggplot2</code> se construit par couches, ajoutées avec <code>+</code> :</p>
 <ul>
-<li>Logiciel statistique et économétrique (S1) – 3 ECTS</li>
-<li>Système d’information géographique (S1) – 3 ECTS</li>
-<li>Econométrie 2 (S2) – 3 ECTS</li>
+<li><code>ggplot(data)</code> indique le tableau de données ;</li>
+<li>une fonction <code>geom_*()</code> indique la forme géométrique : points (<code>geom_point</code>), barres (<code>geom_bar</code>), boîtes à moustaches (<code>geom_boxplot</code>), lignes (<code>geom_line</code>), etc. ;</li>
+<li>la fonction <code>aes()</code> associe des variables du tableau à des propriétés visuelles : position (<code>x</code>, <code>y</code>), couleur (<code>color</code>, <code>fill</code>), taille (<code>size</code>), transparence (<code>alpha</code>).</li>
 </ul>
-<p>La quasi-totalité des ateliers se font avec le langage R.</p>
+<p>On utilise le jeu de données <code>rp2018</code> du package <code>questionr</code>, issu du recensement de la population 2018 de l’Insee. Il contient une ligne par commune de plus de 2 000 habitants. Les pourcentages sont exprimés en points de pourcentage.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 81%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>commune</code></td>
+<td>Nom de la commune</td>
+</tr>
+<tr class="even">
+<td><code>departement</code></td>
+<td>Département</td>
+</tr>
+<tr class="odd">
+<td><code>pop_tot</code></td>
+<td>Population totale</td>
+</tr>
+<tr class="even">
+<td><code>pop_cl</code></td>
+<td>Taille de la commune, en classes</td>
+</tr>
+<tr class="odd">
+<td><code>dipl_aucun</code></td>
+<td>Part des personnes sans diplôme (%)</td>
+</tr>
+<tr class="even">
+<td><code>dipl_sup</code></td>
+<td>Part des diplômés du supérieur (%)</td>
+</tr>
+<tr class="odd">
+<td><code>ouvr</code></td>
+<td>Part des ouvriers (%)</td>
+</tr>
+<tr class="even">
+<td><code>cadres</code></td>
+<td>Part des cadres (%)</td>
+</tr>
+<tr class="odd">
+<td><code>chom</code></td>
+<td>Part des chômeurs dans la population active (%)</td>
+</tr>
+<tr class="even">
+<td><code>proprio</code></td>
+<td>Part des ménages propriétaires de leur logement (%)</td>
+</tr>
+</tbody>
+</table>
+<ol type="i">
+<li><p>Charger le jeu de données avec <code>data(rp2018)</code> et créer un tableau <code>rp69</code> qui ne contient que les communes du Rhône et de la Loire. Représenter le pourcentage d’ouvriers (<code>ouvr</code>) en fonction du pourcentage de personnes sans diplôme (<code>dipl_aucun</code>) par un nuage de points. Commenter.</p></li>
+<li><p>Refaire le nuage de points avec des points rouges et une transparence de 0.2. Faire ensuite varier la couleur des points selon le département et leur taille selon la population. Quelle est la différence entre un argument placé dans <code>aes()</code> et un argument placé en dehors ?</p></li>
+<li><p>Représenter la distribution du pourcentage de propriétaires selon la taille de la commune par des boîtes à moustaches, avec une couleur de remplissage (<code>fill</code>) par département. Commenter.</p></li>
+<li><p>Représenter le nombre de communes par classe de taille avec <code>geom_bar()</code>, avec une couleur de remplissage par département. Modifier ensuite l’argument <code>position</code> de <code>geom_bar()</code> avec les valeurs <code>"dodge"</code> puis <code>"fill"</code>. Que représente l’axe des ordonnées avec <code>position = "fill"</code> ?</p></li>
+<li><p>Représenter le pourcentage de diplômés du supérieur en fonction du pourcentage de cadres, avec un graphique par département (<code>facet_wrap()</code>). Ajouter une droite de régression avec <code>geom_smooth(method = "lm")</code>. Commenter.</p></li>
+<li><p>Représenter le pourcentage de personnes sans diplôme en fonction du taux de chômage. Afficher en rouge le nom des communes dont le taux de chômage dépasse 15 % avec <code>geom_text()</code>, en lui passant un tableau filtré dans l’argument <code>data</code>.</p></li>
+</ol>
 </section>
-<section id="notation" class="level2">
-<h2 class="anchored" data-anchor-id="notation">Notation</h2>
-<p>Toute la notation est en contrôle continu. Les notes viennent de :</p>
+<section id="séries-temporelles" class="level2">
+<h2 class="anchored" data-anchor-id="séries-temporelles">Séries temporelles</h2>
+<p>On utilise le jeu de données <code>economics</code>, fourni avec <code>ggplot2</code>, qui contient des séries mensuelles de l’économie américaine de 1967 à 2015.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 84%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>date</code></td>
+<td>Mois</td>
+</tr>
+<tr class="even">
+<td><code>pce</code></td>
+<td>Dépenses de consommation des ménages (en milliards de dollars)</td>
+</tr>
+<tr class="odd">
+<td><code>psavert</code></td>
+<td>Taux d’épargne des ménages (%)</td>
+</tr>
+<tr class="even">
+<td><code>uempmed</code></td>
+<td>Durée médiane du chômage (en semaines)</td>
+</tr>
+</tbody>
+</table>
+<ol type="i">
+<li><p>Représenter l’évolution des dépenses de consommation (<code>pce</code>) avec <code>geom_line()</code>, en bleu (<code>"dodgerblue"</code>) et avec une épaisseur de ligne (<code>linewidth</code>) de 0.5. Stocker le graphique dans un objet <code>p_1</code>.</p></li>
+<li><p>Ajouter à <code>p_1</code> un titre et retirer les titres des axes avec <code>labs()</code>. Afficher une graduation tous les 5 ans avec seulement l’année, grâce aux arguments <code>date_breaks</code> et <code>date_labels</code> de <code>scale_x_date()</code>.</p></li>
+<li><p>Sélectionner les variables <code>date</code>, <code>psavert</code> et <code>uempmed</code>, puis passer au format long avec <code>pivot_longer()</code> : le tableau <code>df</code> obtenu doit contenir les colonnes <code>date</code>, <code>variable</code> et <code>valeur</code>. Représenter les deux séries sur un même graphique, avec une couleur par série.</p></li>
+<li><p>Différencier les séries à la fois par la couleur et le type de ligne (<code>linetype</code>). Avec <code>scale_color_manual()</code> et <code>scale_linetype_manual()</code>, afficher le taux d’épargne en bleu et en tirets, la durée du chômage en rouge et en trait plein, avec des étiquettes en français (argument <code>labels</code>). Placer la légende en bas, sans titre, et appliquer le thème <code>theme_minimal()</code>.</p></li>
+<li><p>Les deux séries n’ont pas la même unité. Pourquoi est-ce un problème de les représenter sur le même axe ? Représenter chaque série dans un panneau séparé avec <code>facet_wrap()</code> et l’argument <code>scales = "free_y"</code>. Commenter les évolutions.</p></li>
+<li><p>Enregistrer le graphique précédent au format PDF dans le dossier <code>figures</code>, avec <code>ggsave()</code> et <code>here()</code>, en largeur 20 cm et hauteur 12 cm.</p></li>
+</ol>
+</section>
+<section id="bonnes-pratiques-de-visualisation" class="level2">
+<h2 class="anchored" data-anchor-id="bonnes-pratiques-de-visualisation">Bonnes pratiques de visualisation</h2>
+<p>Un bon graphique transmet un message clair sans effort de lecture. Quelques règles, tirées du livre de Claus Wilke :</p>
 <ul>
-<li><p>«&nbsp;Participation&nbsp;» qui inclut l’implication en classe, la qualité des rendus des TP et des pénalités pour retards et absences non justifiées</p></li>
-<li><p>Présentations en classe</p></li>
-<li><p>Projets de fin de semestre :</p>
-<ul>
-<li>Peuvent être communs à plusieurs matières</li>
-<li>Sujets donnés ou sujets libres<br>
-</li>
-<li>Rapport écrit propre (pas de compilation de code, ou de génération IA)</li>
-<li>Présentation orale avec slides (sans les lire)</li>
-</ul></li>
+<li>un titre informatif, des axes avec leurs unités et la source des données ;</li>
+<li>des catégories ordonnées selon la valeur représentée plutôt que par ordre alphabétique ;</li>
+<li>pas de couleur ni de légende qui n’apportent pas d’information ;</li>
+<li>une échelle logarithmique pour les variables très asymétriques (population, revenu) ;</li>
+<li>des palettes adaptées : séquentielles pour des catégories ordonnées, qualitatives sinon, et lisibles par les daltoniens ;</li>
+<li>pas d’effets 3D, de camemberts à nombreuses parts ni de double axe des ordonnées.</li>
 </ul>
-<p>Tous les projets sont recensés dans ce <a href="https://parisnanterrefr-my.sharepoint.com/:x:/g/personal/qhoarau_parisnanterre_fr/ETczO59L9UNBiCgmfUwhPRQBUtK6yDJJzeWJJIQYwRRVlw?e=kUcgWf">fichier Excel partagé</a>.</p>
-<p>Me contacter à <a href="mailto:qhoarau@parisnanterre.fr">qhoarau@parisnanterre.fr</a> (attention : j’ai un homonyme à Nanterre).</p>
+<p>Le code suivant produit un graphique du taux de chômage par région :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rp2018 <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">chom =</span> <span class="fu">mean</span>(chom)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> chom, <span class="at">fill =</span> region))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<ol type="i">
+<li><p>Reproduire ce graphique et lister ses défauts.</p></li>
+<li><p>Corriger le graphique : barres horizontales, régions triées par taux de chômage (<code>fct_reorder()</code>), suppression de la couleur, titre, titres d’axes avec unités et source (argument <code>caption</code> de <code>labs()</code>), thème <code>theme_minimal()</code>.</p></li>
+<li><p>Le calcul lui-même pose problème : la moyenne des taux communaux donne le même poids à une commune de 2 000 habitants et à Marseille. Recalculer le taux de chômage de chaque région comme le rapport entre le nombre total de chômeurs (<code>pop_chom</code>) et le nombre total d’actifs (<code>pop_act_15p</code>). Comparer les deux indicateurs et expliquer l’écart.</p></li>
+<li><p>Représenter la distribution de la population des communes (<code>pop_tot</code>) par un histogramme. Pourquoi est-il illisible ? Utiliser une échelle logarithmique avec <code>scale_x_log10()</code>, et des étiquettes lisibles avec <code>labels = label_number(big.mark = " ")</code>.</p></li>
+<li><p>Pour l’ensemble des communes, représenter le pourcentage de diplômés du supérieur en fonction du pourcentage de cadres, avec une couleur par classe de taille de commune. Utiliser la palette <code>scale_color_viridis_d()</code>. Pourquoi une palette séquentielle est-elle adaptée ici ?</p></li>
+</ol>
+</section>
+<section id="application-les-émissions-de-co2" class="level2">
+<h2 class="anchored" data-anchor-id="application-les-émissions-de-co2">Application : les émissions de CO2</h2>
+<p>On reprend les données d’Our World in Data utilisées au TP2 (voir le tableau des variables du TP2).</p>
+<ol type="i">
+<li><p>Copier dans le dossier <code>data</code> les fichiers <code>owid-co2-data.csv</code> et <code>continents.csv</code> téléchargés au TP2. Les importer et les joindre comme au TP2, en ne conservant que les pays rattachés à un continent, mais sans restreindre la période. Stocker le résultat dans un tableau <code>co2_pays</code>.</p></li>
+<li><p>Représenter l’évolution des émissions de CO2 par habitant depuis 1950 pour la France, l’Allemagne, les États-Unis, la Chine et l’Inde, avec une couleur par pays. Ajouter un titre, l’unité et la source. Commenter.</p></li>
+<li><p>Représenter l’évolution des émissions totales de chaque continent depuis 1950 par un graphique en aires empilées (<code>geom_area()</code>). Commenter.</p></li>
+<li><p>Pour l’année 2022, calculer le PIB par habitant et représenter les émissions par habitant en fonction du PIB par habitant, avec une échelle logarithmique sur les deux axes. La taille des points dépend de la population et leur couleur du continent. Commenter.</p></li>
+<li><p>Ajouter au graphique précédent le nom de quelques pays (France, États-Unis, Chine, Inde, Qatar) avec <code>geom_text()</code>, puis l’enregistrer au format PNG dans le dossier <code>figures</code>.</p></li>
+<li><p>Dans le document Quarto, ajouter au chunk du graphique précédent les options <code>#| label: fig-co2-pib</code> et <code>#| fig-cap:</code> suivie d’une légende. Écrire une phrase qui fait référence à la figure avec <code>@fig-co2-pib</code>. Compiler : que se passe-t-il ?</p></li>
+</ol>
+</section>
+<section id="rendu" class="level2">
+<h2 class="anchored" data-anchor-id="rendu">Rendu</h2>
+<p>Compiler le document complet. Il doit se compiler sans erreur après un redémarrage de R (<code>Session &gt; Restart R</code>). Déposer le fichier <code>TP3.html</code> sur CEL.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -877,10 +1034,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./CMI-LSE-TP2.html" class="pagination-link" aria-label="TP2 : Manipuler des tableaux de données">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">TP2 : Manipuler des tableaux de données</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./CMI-BDD.html" class="pagination-link" aria-label="Bases de données">
-        <span class="nav-page-text">Bases de données</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./CMI-LSE-TP4.html" class="pagination-link" aria-label="TP4 : Statistiques descriptives pour un projet">
+        <span class="nav-page-text">TP4 : Statistiques descriptives pour un projet</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

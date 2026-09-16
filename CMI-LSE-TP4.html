@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Quentin Hoarau">
 
-<title>Ateliers L3 CMI</title>
+<title>TP4 : Statistiques descriptives pour un projet – Ateliers L3 CMI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,12 +20,48 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
-<link href="./CMI-BDD.html" rel="next">
+<link href="./CMI-LSE-TP5.html" rel="next">
+<link href="./CMI-LSE-TP3.html" rel="prev">
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -59,6 +94,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -242,7 +306,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Général</a></li><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./CMI-LSE-intro.html">Logiciel Statistique et Econométrique</a></li><li class="breadcrumb-item"><a href="./CMI-LSE-TP4.html">TP4 : Statistiques descriptives pour un projet</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -280,7 +344,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -327,7 +391,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./CMI-LSE-TP4.html" class="sidebar-item-text sidebar-link">
+  <a href="./CMI-LSE-TP4.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">TP4 : Statistiques descriptives pour un projet</span></a>
   </div>
 </li>
@@ -384,11 +448,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
-  <ul class="collapse">
-  <li><a href="#présentation" id="toc-présentation" class="nav-link" data-scroll-target="#présentation">Présentation</a></li>
-  <li><a href="#notation" id="toc-notation" class="nav-link" data-scroll-target="#notation">Notation</a></li>
-  </ul></li>
+  <li><a href="#de-la-question-aux-données" id="toc-de-la-question-aux-données" class="nav-link active" data-scroll-target="#de-la-question-aux-données">De la question aux données</a></li>
+  <li><a href="#statistiques-univariées" id="toc-statistiques-univariées" class="nav-link" data-scroll-target="#statistiques-univariées">Statistiques univariées</a></li>
+  <li><a href="#statistiques-bivariées" id="toc-statistiques-bivariées" class="nav-link" data-scroll-target="#statistiques-bivariées">Statistiques bivariées</a></li>
+  <li><a href="#tableau-de-statistiques-et-application-au-projet" id="toc-tableau-de-statistiques-et-application-au-projet" class="nav-link" data-scroll-target="#tableau-de-statistiques-et-application-au-projet">Tableau de statistiques et application au projet</a></li>
+  <li><a href="#rendu" id="toc-rendu" class="nav-link" data-scroll-target="#rendu">Rendu</a></li>
   </ul>
 </nav>
     </div>
@@ -396,28 +460,16 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Général</a></li><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./CMI-LSE-intro.html">Logiciel Statistique et Econométrique</a></li><li class="breadcrumb-item"><a href="./CMI-LSE-TP4.html">TP4 : Statistiques descriptives pour un projet</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Ateliers L3 CMI</h1>
+<h1 class="title">TP4 : Statistiques descriptives pour un projet</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Auteur·rice</div>
-    <div class="quarto-title-meta-contents">
-             <p>Quentin Hoarau <a href="mailto:qhoarau@parisnanterre.fr" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Date de publication</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">16 septembre 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -427,38 +479,121 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level1 unnumbered">
-<h1 class="unnumbered">Introduction</h1>
-<section id="présentation" class="level2">
-<h2 class="anchored" data-anchor-id="présentation">Présentation</h2>
-<p>Ce livre contient les supports des trois ateliers spécifiques de la L3 CMI de l’université Paris Nanterre :</p>
-<ul>
-<li>Logiciel statistique et économétrique (S1) – 3 ECTS</li>
-<li>Système d’information géographique (S1) – 3 ECTS</li>
-<li>Econométrie 2 (S2) – 3 ECTS</li>
-</ul>
-<p>La quasi-totalité des ateliers se font avec le langage R.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">eval=</span><span class="cn">FALSE</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(questionr)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stargazer)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Toute étude empirique commence par une description soignée des données : qui est observé, quelles variables sont disponibles, quelle est leur qualité, et quelles relations apparaissent entre elles. Ce TP suit cette démarche sur une enquête de l’Insee, puis l’applique aux données de votre projet.</p>
+<p>Comme aux TP précédents, créer un projet RStudio <code>TP4</code> avec les sous-dossiers <code>code</code>, <code>data</code> et <code>figures</code>, et rédiger les réponses dans <code>code/TP4.qmd</code>.</p>
+<section id="de-la-question-aux-données" class="level2">
+<h2 class="anchored" data-anchor-id="de-la-question-aux-données">De la question aux données</h2>
+<p>On cherche à répondre à deux questions : <strong>qui pratique une activité sportive ?</strong> et <strong>qui regarde le plus la télévision ?</strong> On utilise le jeu de données <code>hdv2003</code> du package <code>questionr</code>, un extrait de l’enquête <em>Histoire de vie</em> réalisée par l’Insee en 2003 auprès de 2 000 personnes.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 83%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>id</code></td>
+<td>Identifiant de l’enquêté</td>
+</tr>
+<tr class="even">
+<td><code>age</code></td>
+<td>Âge (en années)</td>
+</tr>
+<tr class="odd">
+<td><code>sexe</code></td>
+<td>Sexe</td>
+</tr>
+<tr class="even">
+<td><code>nivetud</code></td>
+<td>Niveau d’études le plus élevé atteint</td>
+</tr>
+<tr class="odd">
+<td><code>occup</code></td>
+<td>Occupation actuelle (emploi, chômage, études, retraite, etc.)</td>
+</tr>
+<tr class="even">
+<td><code>qualif</code></td>
+<td>Qualification professionnelle</td>
+</tr>
+<tr class="odd">
+<td><code>sport</code></td>
+<td>Pratique d’une activité sportive (Oui / Non)</td>
+</tr>
+<tr class="even">
+<td><code>heures.tv</code></td>
+<td>Nombre d’heures passées devant la télévision par jour</td>
+</tr>
+<tr class="odd">
+<td><code>poids</code></td>
+<td>Poids de sondage</td>
+</tr>
+</tbody>
+</table>
+<ol type="i">
+<li><p>Charger le jeu de données avec <code>data(hdv2003)</code>. Quelle est l’unité d’observation ? Parmi les variables du tableau ci-dessus, lesquelles sont quantitatives et lesquelles sont qualitatives ?</p></li>
+<li><p>Compter le nombre de valeurs manquantes de chaque variable avec <code>summarise()</code>, <code>across()</code> et <code>is.na()</code>. Quelles variables ont beaucoup de valeurs manquantes ? Proposer une explication pour <code>qualif</code>.</p></li>
+<li><p>Afficher l’occupation et l’âge moyen des personnes dont le niveau d’études est manquant. À quoi correspondent ces valeurs manquantes ?</p></li>
+<li><p>Créer un tableau <code>hdv</code> avec une variable <code>etudes</code> qui regroupe <code>nivetud</code> en quatre modalités avec <code>fct_collapse()</code> : « Primaire ou moins », « Secondaire », « Technique ou professionnel » et « Supérieur ». Transformer ensuite les valeurs manquantes en une modalité « En cours d’études » avec <code>fct_na_value_to_level()</code>. Vérifier le résultat avec <code>count()</code>.</p></li>
+<li><p>Ajouter au tableau <code>hdv</code> une variable <code>age_cl</code> en classes d’âge (18-29, 30-44, 45-59, 60-74, 75 et plus) avec <code>cut()</code>, et une variable <code>statut</code> qui distingue les actifs occupés, les chômeurs et les inactifs avec <code>case_when()</code>.</p></li>
+<li><p>Vérifier qu’il n’y a pas de doublons (un <code>id</code> par ligne). Repérer les valeurs extrêmes de <code>heures.tv</code> : combien de personnes déclarent plus de 8 heures par jour ? Faut-il les supprimer ?</p></li>
+</ol>
 </section>
-<section id="notation" class="level2">
-<h2 class="anchored" data-anchor-id="notation">Notation</h2>
-<p>Toute la notation est en contrôle continu. Les notes viennent de :</p>
-<ul>
-<li><p>«&nbsp;Participation&nbsp;» qui inclut l’implication en classe, la qualité des rendus des TP et des pénalités pour retards et absences non justifiées</p></li>
-<li><p>Présentations en classe</p></li>
-<li><p>Projets de fin de semestre :</p>
-<ul>
-<li>Peuvent être communs à plusieurs matières</li>
-<li>Sujets donnés ou sujets libres<br>
-</li>
-<li>Rapport écrit propre (pas de compilation de code, ou de génération IA)</li>
-<li>Présentation orale avec slides (sans les lire)</li>
-</ul></li>
-</ul>
-<p>Tous les projets sont recensés dans ce <a href="https://parisnanterrefr-my.sharepoint.com/:x:/g/personal/qhoarau_parisnanterre_fr/ETczO59L9UNBiCgmfUwhPRQBUtK6yDJJzeWJJIQYwRRVlw?e=kUcgWf">fichier Excel partagé</a>.</p>
-<p>Me contacter à <a href="mailto:qhoarau@parisnanterre.fr">qhoarau@parisnanterre.fr</a> (attention : j’ai un homonyme à Nanterre).</p>
+<section id="statistiques-univariées" class="level2">
+<h2 class="anchored" data-anchor-id="statistiques-univariées">Statistiques univariées</h2>
+<p>On décrit chaque variable séparément : tendance centrale (moyenne, médiane) et dispersion (écart-type, quantiles) pour les variables quantitatives, tableau de fréquences pour les variables qualitatives.</p>
+<ol type="i">
+<li><p>Calculer la moyenne, la médiane, l’écart-type, le minimum et le maximum de <code>age</code> et de <code>heures.tv</code>. Afficher les déciles de <code>heures.tv</code> avec <code>quantile()</code>.</p></li>
+<li><p>Obtenir le même résultat en une seule instruction avec <code>summarise()</code> et <code>across()</code>, en passant une liste de fonctions : <code>list(moyenne = ~ mean(.x, na.rm = TRUE), ...)</code>.</p></li>
+<li><p>Représenter la distribution de <code>age</code> par un histogramme (<code>binwidth = 5</code>) et celle de <code>heures.tv</code> par un diagramme en barres. Comparer la moyenne et la médiane de <code>heures.tv</code> et commenter la forme de sa distribution.</p></li>
+<li><p>Calculer les effectifs et les pourcentages des modalités de <code>sexe</code>, <code>etudes</code>, <code>statut</code> et <code>sport</code>.</p></li>
+<li><p>L’échantillon n’est pas parfaitement représentatif de la population française : chaque personne a un poids de sondage (<code>poids</code>). Comparer la part de sportifs dans l’échantillon et la part pondérée, calculée avec <code>weighted.mean()</code>. Laquelle faut-il retenir pour décrire la population française ?</p></li>
+</ol>
+</section>
+<section id="statistiques-bivariées" class="level2">
+<h2 class="anchored" data-anchor-id="statistiques-bivariées">Statistiques bivariées</h2>
+<p>On étudie maintenant les relations entre deux variables. L’outil dépend de leur nature : tableau croisé et test du <span class="math inline">\(\chi^2\)</span> pour deux variables qualitatives, moyennes par groupe et test de Student pour une variable quantitative et une variable qualitative, corrélation pour deux variables quantitatives.</p>
+<ol type="i">
+<li><p>Construire le tableau croisé du niveau d’études et de la pratique sportive, avec les pourcentages en ligne : pour chaque niveau d’études, quelle part des personnes pratique un sport ? Utiliser <code>count()</code>, <code>group_by()</code> et <code>mutate()</code>. Commenter.</p></li>
+<li><p>Tester l’indépendance entre niveau d’études et pratique sportive avec <code>chisq.test()</code>, appliqué à <code>table(hdv$etudes, hdv$sport)</code>. Quelle est l’hypothèse nulle ? Conclure.</p></li>
+<li><p>Calculer le nombre moyen d’heures de télévision des hommes et des femmes. La différence est-elle significative ? Utiliser <code>t.test(heures.tv ~ sexe, data = hdv)</code>.</p></li>
+<li><p>Représenter la distribution de <code>heures.tv</code> selon le niveau d’études par des boîtes à moustaches, et calculer la moyenne par niveau. Commenter.</p></li>
+<li><p>Calculer la corrélation entre l’âge et le nombre d’heures de télévision avec <code>cor()</code> (argument <code>use = "complete.obs"</code>), puis tester sa significativité avec <code>cor.test()</code>. Commenter.</p></li>
+<li><p>Calculer la part de sportifs par classe d’âge, puis l’âge moyen par niveau d’études. Peut-on conclure de la question (i) que faire des études augmente la pratique sportive ?</p></li>
+</ol>
+</section>
+<section id="tableau-de-statistiques-et-application-au-projet" class="level2">
+<h2 class="anchored" data-anchor-id="tableau-de-statistiques-et-application-au-projet">Tableau de statistiques et application au projet</h2>
+<p>Un rapport présente les statistiques descriptives dans des tableaux soignés plutôt que dans des sorties brutes de R. Dans un document Quarto, un tableau produit par <code>stargazer()</code> s’affiche avec l’argument <code>type = "html"</code> et l’option de chunk <code>#| results: asis</code>.</p>
+<ol type="i">
+<li><p>Produire un tableau de statistiques descriptives de <code>age</code>, <code>heures.tv</code> et <code>freres.soeurs</code> avec <code>stargazer()</code>. La fonction attend un <code>data.frame</code> : utiliser <code>as.data.frame()</code>. Tester <code>type = "text"</code> dans la console, puis <code>type = "html"</code> dans le document compilé.</p></li>
+<li><p>Construire un tableau qui donne, pour chaque niveau d’études, l’effectif, l’âge moyen, le nombre moyen d’heures de télévision et la part de sportifs. L’afficher avec <code>knitr::kable()</code>, en arrondissant à une décimale (<code>digits</code>) et avec des noms de colonnes lisibles (<code>col.names</code>).</p></li>
+<li><p>Rédiger dans le document un paragraphe de description de l’échantillon, dont les chiffres sont calculés par du code en ligne. Par exemple, la phrase suivante affiche l’âge moyen calculé au moment de la compilation :</p></li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>L'âge moyen est de <span class="in">`r round(mean(hdv$age), 1)`</span> ans.</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Quel est l’avantage par rapport à un chiffre recopié à la main ?</p>
+<ol start="4" type="i">
+<li><p>Pour votre projet : formuler la question de recherche, puis importer vos données dans le dossier <code>data</code>. Préciser l’unité d’observation, la période et le champ couverts, la variable d’intérêt et trois à cinq variables explicatives. Faire le bilan des valeurs manquantes et effectuer les recodages nécessaires.</p></li>
+<li><p>Toujours pour votre projet : produire les statistiques univariées et bivariées pertinentes pour votre question (tableaux et graphiques), un tableau de statistiques descriptives, et rédiger une description des données d’une dizaine de lignes.</p></li>
+</ol>
+</section>
+<section id="rendu" class="level2">
+<h2 class="anchored" data-anchor-id="rendu">Rendu</h2>
+<p>Compiler le document complet. Il doit se compiler sans erreur après un redémarrage de R (<code>Session &gt; Restart R</code>). Déposer le fichier <code>TP4.html</code> sur CEL.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -877,10 +1012,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./CMI-LSE-TP3.html" class="pagination-link" aria-label="TP3 : Visualiser des données avec `ggplot2`">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">TP3 : Visualiser des données avec <code>ggplot2</code></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./CMI-BDD.html" class="pagination-link" aria-label="Bases de données">
-        <span class="nav-page-text">Bases de données</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./CMI-LSE-TP5.html" class="pagination-link" aria-label="TP5 : Modèles de régression linéaire">
+        <span class="nav-page-text">TP5 : Modèles de régression linéaire</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

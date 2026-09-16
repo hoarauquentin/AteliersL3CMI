@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Quentin Hoarau">
 
-<title>Ateliers L3 CMI</title>
+<title>TP1 : Premiers pas avec R et Quarto – Ateliers L3 CMI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,12 +20,48 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
-<link href="./CMI-BDD.html" rel="next">
+<link href="./CMI-LSE-TP2.html" rel="next">
+<link href="./CMI-LSE-intro.html" rel="prev">
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -59,6 +94,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -242,7 +306,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Général</a></li><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./CMI-LSE-intro.html">Logiciel Statistique et Econométrique</a></li><li class="breadcrumb-item"><a href="./CMI-LSE-TP1.html">TP1 : Premiers pas avec R et Quarto</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -280,7 +344,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -309,7 +373,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./CMI-LSE-TP1.html" class="sidebar-item-text sidebar-link">
+  <a href="./CMI-LSE-TP1.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">TP1 : Premiers pas avec R et Quarto</span></a>
   </div>
 </li>
@@ -384,11 +448,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <li><a href="#projet-rstudio-et-quarto" id="toc-projet-rstudio-et-quarto" class="nav-link active" data-scroll-target="#projet-rstudio-et-quarto">Projet RStudio et Quarto</a>
   <ul class="collapse">
-  <li><a href="#présentation" id="toc-présentation" class="nav-link" data-scroll-target="#présentation">Présentation</a></li>
-  <li><a href="#notation" id="toc-notation" class="nav-link" data-scroll-target="#notation">Notation</a></li>
+  <li><a href="#organiser-un-projet" id="toc-organiser-un-projet" class="nav-link" data-scroll-target="#organiser-un-projet">Organiser un projet</a></li>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
   </ul></li>
+  <li><a href="#vecteurs" id="toc-vecteurs" class="nav-link" data-scroll-target="#vecteurs">Vecteurs</a></li>
+  <li><a href="#types-listes-et-tableaux" id="toc-types-listes-et-tableaux" class="nav-link" data-scroll-target="#types-listes-et-tableaux">Types, listes et tableaux</a></li>
+  <li><a href="#packages-aide-et-chaînes-de-caractères" id="toc-packages-aide-et-chaînes-de-caractères" class="nav-link" data-scroll-target="#packages-aide-et-chaînes-de-caractères">Packages, aide et chaînes de caractères</a></li>
+  <li><a href="#rendu" id="toc-rendu" class="nav-link" data-scroll-target="#rendu">Rendu</a></li>
   </ul>
 </nav>
     </div>
@@ -396,28 +464,16 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Général</a></li><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./CMI-LSE-intro.html">Logiciel Statistique et Econométrique</a></li><li class="breadcrumb-item"><a href="./CMI-LSE-TP1.html">TP1 : Premiers pas avec R et Quarto</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Ateliers L3 CMI</h1>
+<h1 class="title">TP1 : Premiers pas avec R et Quarto</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Auteur·rice</div>
-    <div class="quarto-title-meta-contents">
-             <p>Quentin Hoarau <a href="mailto:qhoarau@parisnanterre.fr" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Date de publication</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">16 septembre 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -427,38 +483,173 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level1 unnumbered">
-<h1 class="unnumbered">Introduction</h1>
-<section id="présentation" class="level2">
-<h2 class="anchored" data-anchor-id="présentation">Présentation</h2>
-<p>Ce livre contient les supports des trois ateliers spécifiques de la L3 CMI de l’université Paris Nanterre :</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">eval=</span><span class="cn">FALSE</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Ce TP présente l’environnement de travail utilisé pendant tout le semestre : l’organisation d’un projet, RStudio pour écrire et exécuter du code R, et Quarto pour rédiger des documents qui mêlent texte, code et résultats. Tous les TP suivants seront rendus sous la forme d’un document Quarto compilé en HTML.</p>
+<p>Pour ce TP, cherchez les réponses par vous-même sans assistant IA : utilisez l’aide de R (<code>?nom_de_fonction</code>), un moteur de recherche, ou ce <a href="https://juba.github.io/tidyverse/">tutoriel</a> sur R et le <code>tidyverse</code>.</p>
+<section id="projet-rstudio-et-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="projet-rstudio-et-quarto">Projet RStudio et Quarto</h2>
+<section id="organiser-un-projet" class="level3">
+<h3 class="anchored" data-anchor-id="organiser-un-projet">Organiser un projet</h3>
+<p>Un projet d’analyse de données accumule vite de nombreux fichiers : données, scripts, graphiques, rapport. Quelques règles permettent de s’y retrouver et de rendre le travail reproductible, c’est-à-dire exécutable sur un autre ordinateur sans modification :</p>
 <ul>
-<li>Logiciel statistique et économétrique (S1) – 3 ECTS</li>
-<li>Système d’information géographique (S1) – 3 ECTS</li>
-<li>Econométrie 2 (S2) – 3 ECTS</li>
+<li><strong>un dossier par projet</strong> (ici, un par TP), qui contient un fichier <code>.Rproj</code>. On ouvre toujours le projet en double-cliquant sur ce fichier : le répertoire de travail est alors la racine du projet ;</li>
+<li><strong>un sous-dossier par type de fichier</strong> : <code>code/</code> pour les scripts <code>.R</code> et les documents <code>.qmd</code>, <code>data/</code> pour les données, <code>figures/</code> pour les graphiques exportés ;</li>
+<li><strong>les données brutes ne sont jamais modifiées à la main</strong> : tous les traitements sont faits par le code, et les données transformées sont enregistrées sous un autre nom ;</li>
+<li><strong>des chemins relatifs</strong> : jamais de chemin absolu (<code>C:/Users/moi/Bureau/...</code>) ni de <code>setwd()</code>, qui ne fonctionnent que sur votre ordinateur ;</li>
+<li><strong>des noms de fichiers sans espaces ni accents</strong>, éventuellement numérotés dans l’ordre d’exécution (<code>01_import.R</code>, <code>02_graphiques.R</code>).</li>
 </ul>
-<p>La quasi-totalité des ateliers se font avec le langage R.</p>
+<pre class="text"><code>LSE/
++-- TP1/
+|   +-- TP1.Rproj
+|   +-- code/
+|   |   +-- TP1.qmd
+|   +-- data/
+|   +-- figures/
++-- TP2/
+    +-- TP2.Rproj
+    +-- ...</code></pre>
+<p>Lors de la compilation, un document Quarto s’exécute depuis son propre dossier (ici <code>code/</code>) et non depuis la racine du projet. Pour écrire des chemins valables partout, on utilise la fonction <code>here()</code> du package <code>here</code>, qui construit le chemin à partir de la racine du projet : <code>here("data", "co2.csv")</code>.</p>
 </section>
-<section id="notation" class="level2">
-<h2 class="anchored" data-anchor-id="notation">Notation</h2>
-<p>Toute la notation est en contrôle continu. Les notes viennent de :</p>
+<section id="quarto" class="level3">
+<h3 class="anchored" data-anchor-id="quarto">Quarto</h3>
+<p>Un document Quarto (extension <code>.qmd</code>) comporte trois éléments :</p>
 <ul>
-<li><p>«&nbsp;Participation&nbsp;» qui inclut l’implication en classe, la qualité des rendus des TP et des pénalités pour retards et absences non justifiées</p></li>
-<li><p>Présentations en classe</p></li>
-<li><p>Projets de fin de semestre :</p>
-<ul>
-<li>Peuvent être communs à plusieurs matières</li>
-<li>Sujets donnés ou sujets libres<br>
-</li>
-<li>Rapport écrit propre (pas de compilation de code, ou de génération IA)</li>
-<li>Présentation orale avec slides (sans les lire)</li>
-</ul></li>
+<li>un <strong>en-tête YAML</strong>, délimité par <code>---</code>, qui contient les métadonnées du document (titre, auteur, format de sortie) ;</li>
+<li>du <strong>texte</strong> rédigé en Markdown ;</li>
+<li>des <strong>chunks</strong> de code R, délimités par trois accents graves, dont le résultat s’affiche dans le document.</li>
 </ul>
-<p>Tous les projets sont recensés dans ce <a href="https://parisnanterrefr-my.sharepoint.com/:x:/g/personal/qhoarau_parisnanterre_fr/ETczO59L9UNBiCgmfUwhPRQBUtK6yDJJzeWJJIQYwRRVlw?e=kUcgWf">fichier Excel partagé</a>.</p>
-<p>Me contacter à <a href="mailto:qhoarau@parisnanterre.fr">qhoarau@parisnanterre.fr</a> (attention : j’ai un homonyme à Nanterre).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "TP1 : Premiers pas avec R"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Prénom Nom"</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Une section</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>Du texte en **gras**, en *italique*, et un <span class="co">[</span><span class="ot">lien</span><span class="co">](https://quarto.org)</span>.</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>La syntaxe Markdown de base est la suivante :</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Syntaxe</th>
+<th>Résultat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>## Titre</code>, <code>### Sous-titre</code></td>
+<td>Titres de niveau 2 et 3</td>
+</tr>
+<tr class="even">
+<td><code>**gras**</code>, <code>*italique*</code></td>
+<td><strong>gras</strong>, <em>italique</em></td>
+</tr>
+<tr class="odd">
+<td><code>- élément</code></td>
+<td>Liste à puces</td>
+</tr>
+<tr class="even">
+<td><code>1. élément</code></td>
+<td>Liste numérotée</td>
+</tr>
+<tr class="odd">
+<td><code>[texte](https://...)</code></td>
+<td>Lien hypertexte</td>
+</tr>
+<tr class="even">
+<td><code>`code`</code></td>
+<td><code>code</code></td>
+</tr>
+<tr class="odd">
+<td><code>$y = \beta_0 + \beta_1 x$</code></td>
+<td><span class="math inline">\(y = \beta_0 + \beta_1 x\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Les options d’un chunk s’écrivent en tête du chunk, précédées de <code>#|</code>. Par exemple, <code>#| echo: false</code> masque le code dans le document compilé.</p>
+<ol type="i">
+<li><p>Créer un dossier <code>LSE</code> sur votre drive. Dans RStudio, créer un projet <code>TP1</code> dans ce dossier (<code>File &gt; New Project &gt; New Directory &gt; New Project</code>). Quels fichiers sont créés ? Fermer RStudio, rouvrir le projet en double-cliquant sur <code>TP1.Rproj</code>, puis afficher le répertoire de travail dans la console avec <code>getwd()</code>.</p></li>
+<li><p>Créer les sous-dossiers <code>code</code>, <code>data</code> et <code>figures</code>, depuis l’onglet <code>Files</code> de RStudio ou avec <code>dir.create()</code>.</p></li>
+<li><p>Créer un document Quarto (<code>File &gt; New File &gt; Quarto Document</code>), en décochant l’éditeur visuel, et l’enregistrer sous <code>code/TP1.qmd</code>. Modifier l’en-tête YAML pour indiquer un titre, votre nom comme auteur et <code>format: html</code>. Compiler le document avec le bouton <code>Render</code> : où se trouve le fichier HTML produit ?</p></li>
+<li><p>Supprimer le contenu d’exemple. Rédiger une courte présentation de vous-même comprenant : un titre de section, un mot en gras et un mot en italique, une liste à puces de trois éléments, un lien vers le site <a href="https://quarto.org">quarto.org</a> et l’équation <span class="math inline">\(y = \beta_0 + \beta_1 x\)</span>. Compiler et vérifier le rendu. Ajouter ensuite une section pour chacune des parties suivantes du TP : dans la suite, répondre à chaque question dans un chunk et rédiger les réponses d’interprétation dans le texte.</p></li>
+<li><p>Insérer un chunk (raccourci <code>Ctrl + Alt + I</code>, ou <code>Cmd + Option + I</code> sur Mac) qui calcule <code>2 + 3</code>. L’exécuter dans RStudio avec la flèche verte, puis compiler. Ajouter l’option <code>#| echo: false</code> et compiler de nouveau : que change-t-elle ? Même question avec <code>#| eval: false</code>.</p></li>
+<li><p>Ajouter un chunk contenant <code>getwd()</code> et compiler : quel répertoire s’affiche ? Comparer avec le résultat de la question (i). Installer le package <code>here</code> depuis la console, le charger dans le document, puis afficher <code>here("data", "co2.csv")</code>. Pourquoi ce chemin est-il préférable à <code>"C:/Users/moi/LSE/TP1/data/co2.csv"</code> ?</p></li>
+</ol>
+</section>
+</section>
+<section id="vecteurs" class="level2">
+<h2 class="anchored" data-anchor-id="vecteurs">Vecteurs</h2>
+<p>En R, l’objet de base est le vecteur : une suite de valeurs de même type. On crée un objet avec l’opérateur d’assignation <code>&lt;-</code>.</p>
+<ol type="i">
+<li><p>Créer le vecteur <span class="math inline">\(x = (1, 2, 3, 4, 5)\)</span> et le stocker dans un objet <code>x</code>, de trois façons : avec <code>c()</code>, avec <code>:</code> et avec <code>seq()</code>. Afficher sa classe avec <code>class()</code> et sa longueur avec <code>length()</code>.</p></li>
+<li><p>Extraire le premier élément de <code>x</code>, puis le dernier en utilisant <code>length()</code>. Stocker les trois premiers éléments dans un vecteur <code>a</code> et les éléments en positions 1, 3 et 5 dans un vecteur <code>b</code>.</p></li>
+<li><p>Calculer <code>(x + 10) * 2</code>, puis <code>a + b</code> et <code>a * b</code>. Calculer ensuite <code>x + a</code> : que se passe-t-il ?</p></li>
+<li><p>À l’aide de l’opérateur modulo <code>%%</code>, afficher les éléments de <code>x</code> qui sont pairs. Afficher ensuite les éléments multiples de 2 <strong>ou</strong> de 3 (opérateur <code>|</code>), puis leurs positions avec <code>which()</code>.</p></li>
+<li><p>Remplacer le premier élément de <code>x</code> par <code>NA</code>, puis calculer la somme et la moyenne de <code>x</code>. Consulter l’aide de <code>sum()</code> pour obtenir un résultat qui ignore la valeur manquante.</p></li>
+<li><p>Le tableau ci-dessous donne les émissions de CO2 par habitant en 2023, en tonnes (source : <a href="https://ourworldindata.org/co2-emissions">Our World in Data</a>).</p></li>
+</ol>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Pays</th>
+<th>France</th>
+<th>Allemagne</th>
+<th>États-Unis</th>
+<th>Chine</th>
+<th>Inde</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CO2 / hab.</td>
+<td>4.1</td>
+<td>7.0</td>
+<td>14.3</td>
+<td>8.6</td>
+<td>2.1</td>
+</tr>
+</tbody>
+</table>
+<p>Créer le vecteur <code>co2_hab</code> et nommer ses éléments avec <code>names()</code>. Calculer la moyenne, puis afficher le pays le plus émetteur avec <code>which.max()</code> et les pays dont les émissions dépassent la moyenne. Trier le vecteur par ordre décroissant avec <code>sort()</code>.</p>
+</section>
+<section id="types-listes-et-tableaux" class="level2">
+<h2 class="anchored" data-anchor-id="types-listes-et-tableaux">Types, listes et tableaux</h2>
+<p>Un vecteur ne contient qu’un seul type de valeurs (<code>numeric</code>, <code>character</code>, <code>logical</code>). Une liste peut contenir des objets de types différents. Un tableau de données (<code>data.frame</code> ou <code>tibble</code>) est une liste de vecteurs de même longueur : chaque colonne est une variable, chaque ligne une observation.</p>
+<ol type="i">
+<li><p>Évaluer <code>TRUE + FALSE + TRUE * 4</code>, puis <code>c(1, 4, TRUE)</code> et <code>c(1, 4, TRUE, "bonjour")</code>. Afficher la classe des deux derniers objets. Commenter.</p></li>
+<li><p>Évaluer <code>as.numeric("3.5")</code>, <code>as.numeric("trois")</code> et <code>as.character(12)</code>. Commenter.</p></li>
+<li><p>Créer une liste <code>moi</code> contenant trois éléments nommés <code>nom</code>, <code>prenom</code> et <code>annee_naissance</code>. Extraire votre prénom de deux façons : par sa position avec <code>[[ ]]</code>, puis par son nom avec <code>$</code>. Comparer la classe de <code>moi[2]</code> et celle de <code>moi[[2]]</code>.</p></li>
+<li><p>Ajouter à la liste <code>moi</code> un élément <code>formation</code>, puis afficher sa structure avec <code>str()</code>.</p></li>
+<li><p>Créer avec <code>tibble()</code> un tableau <code>pays</code> contenant trois colonnes : le nom du pays, les émissions par habitant de la partie précédente et la population en millions d’habitants (France : 66.4 ; Allemagne : 84.5 ; États-Unis : 343.5 ; Chine : 1422.6 ; Inde : 1438.1). Afficher ses dimensions avec <code>dim()</code> et le nom de ses colonnes avec <code>names()</code>.</p></li>
+<li><p>Ajouter au tableau une colonne <code>co2_total</code> égale aux émissions totales du pays en millions de tonnes. Quel pays émet le plus au total ? Comparer avec le classement par habitant et commenter. Enregistrer enfin le tableau sous <code>data/pays.csv</code> avec <code>write_csv()</code> et <code>here()</code>.</p></li>
+</ol>
+</section>
+<section id="packages-aide-et-chaînes-de-caractères" class="level2">
+<h2 class="anchored" data-anchor-id="packages-aide-et-chaînes-de-caractères">Packages, aide et chaînes de caractères</h2>
+<p>Les packages étendent les fonctionnalités de R. On installe un package une seule fois avec <code>install.packages()</code>, puis on le charge à chaque session avec <code>library()</code>. Le <code>tidyverse</code> regroupe plusieurs packages, dont <code>stringr</code> pour manipuler les chaînes de caractères.</p>
+<ol type="i">
+<li><p>Installer le package <code>nycflights13</code>, qui sera utilisé au prochain TP, puis le charger. Pourquoi ne faut-il pas laisser <code>install.packages()</code> dans un document Quarto ?</p></li>
+<li><p>Ouvrir l’aide de la fonction <code>mean()</code>. Quels sont ses arguments ? Que fait l’argument <code>trim</code> ?</p></li>
+<li><p>Créer les objets <code>a</code> et <code>b</code> contenant respectivement les chaînes « 23 à 0 » et « C’est la piquette, Jack! », puis le vecteur <code>phrases</code> contenant <code>a</code> et <code>b</code>. Afficher le nombre de caractères de chaque élément avec <code>str_length()</code>.</p></li>
+<li><p>Concaténer <code>a</code> et <code>b</code> avec <code>str_c()</code>, en les séparant par une virgule. Mettre les éléments de <code>phrases</code> en majuscules avec <code>str_to_upper()</code>.</p></li>
+<li><p>Tester avec <code>str_detect()</code> si le motif « piqu » est présent dans les éléments de <code>phrases</code>. Remplacer toutes les lettres « a » de <code>b</code> par « Z » avec <code>str_replace_all()</code>.</p></li>
+<li><p>Un fichier de données contient les noms de pays suivants, mal saisis : <code>c(" france", "ALLEMAGNE ", "etats-unis", "chine  ")</code>. Les nettoyer pour obtenir « France », « Allemagne », « Etats-Unis » et « Chine », à l’aide de <code>str_trim()</code> et <code>str_to_title()</code>.</p></li>
+</ol>
+</section>
+<section id="rendu" class="level2">
+<h2 class="anchored" data-anchor-id="rendu">Rendu</h2>
+<p>Compiler le document complet. Il doit se compiler sans erreur après un redémarrage de R (<code>Session &gt; Restart R</code>) : cela garantit qu’il ne dépend pas d’objets créés à la main dans la console. Déposer le fichier <code>TP1.html</code> sur CEL.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -877,10 +1068,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./CMI-LSE-intro.html" class="pagination-link" aria-label="Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduction</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./CMI-BDD.html" class="pagination-link" aria-label="Bases de données">
-        <span class="nav-page-text">Bases de données</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./CMI-LSE-TP2.html" class="pagination-link" aria-label="TP2 : Manipuler des tableaux de données">
+        <span class="nav-page-text">TP2 : Manipuler des tableaux de données</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
