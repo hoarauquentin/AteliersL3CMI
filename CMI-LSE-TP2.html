@@ -519,8 +519,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>On utilise la base de données sur les émissions de CO2 de <a href="https://github.com/owid/co2-data">Our World in Data</a>, qui couvre tous les pays depuis 1750. Les variables utilisées sont les suivantes :</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 20%">
-<col style="width: 79%">
+<col style="width: 23%">
+<col style="width: 76%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -562,8 +562,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="i">
 <li>Dans la console, télécharger le fichier dans le dossier <code>data</code> avec <code>download.file()</code> :</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">"https://raw.githubusercontent.com/owid/co2-data/master/owid-co2-data.csv"</span>,</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>              <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"owid-co2-data.csv"</span>))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Dans le document, importer ensuite le fichier avec <code>read_csv()</code> et <code>here()</code> dans un objet <code>co2</code>. Pourquoi télécharger le fichier une fois plutôt que lire directement l’URL à chaque compilation ?</p>
 <ol start="2" type="i">
 <li><p>Afficher les dimensions de <code>co2</code> et sa structure. Que représente une ligne du tableau ?</p></li>
@@ -594,8 +592,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Joindre la table <code>airports</code> à la table <code>flights</code> en utilisant comme clé le code de l’aéroport de destination (<code>by = c("dest" = "faa")</code>). Quelles sont les trois destinations les plus fréquentes ? Avec <code>anti_join()</code>, identifier les destinations absentes de la table <code>airports</code>.</p></li>
 <li><p>Importer la <a href="https://ourworldindata.org/grapher/continents-according-to-our-world-in-data">classification des pays par continent</a> de Our World in Data, en la téléchargeant d’abord dans <code>data</code> comme à la partie précédente :</p></li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">"https://ourworldindata.org/grapher/continents-according-to-our-world-in-data.csv?v=1&amp;csvType=full&amp;useColumnShortNames=true"</span>,</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>              <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"continents.csv"</span>))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">"https://ourworldindata.org/grapher/continents-according-to-our-world-in-data.csv?v=1&amp;csvType=full&amp;useColumnShortNames=true"</span>,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>              <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"continents.csv"</span>))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Joindre la variable <code>owid_region</code>, renommée <code>continent</code>, au tableau <code>co2_pays</code> : la clé est <code>iso_code</code> d’un côté et <code>code</code> de l’autre. Quels pays n’ont pas de continent ?</p>
 <ol start="4" type="i">
 <li><p>Calculer les émissions totales de chaque continent en 1990 et en 2023, puis passer au format large avec <code>pivot_wider()</code> (une colonne par année). Ajouter une variable donnant l’évolution en pourcentage entre les deux années. Commenter.</p></li>
