@@ -48,7 +48,7 @@
     "href": "CMI-LSE-intro.html",
     "title": "Introduction",
     "section": "",
-    "text": "Le cours en résumé :\n\n20 h, dont 4 h d’examen\nObjectifs : prise en main de R et Quarto, gestion et visualisation de données, statistiques descriptives, modèles de régression\nLangage : R\nModalités d’examens :\n\nNote de participation\nUn projet avec choix du sujet libre\nPrésentation individuelle d’un chapitre d’un livre sur les bonnes pratiques de la dataviz : Fundamentals of Data Visualization de Claus Wilke. Inscription ici.\n\n\nLe plan :\n\nPremiers pas avec R et Quarto\nManipuler des tableaux de données\nVisualiser des données avec ggplot2\nStatistiques descriptives pour un projet\nModèles de régression linéaire\n\nEn général pour R, regardez ce bon tutoriel sur le tidyverse.",
+    "text": "Le cours en résumé :\n\n20 h, dont 4 h d’examen\nObjectifs : prise en main de R et Quarto, gestion et visualisation de données, statistiques descriptives, modèles de régression\nLangage : R\nModalités d’examens :\n\nNote de participation\nUn projet avec choix du sujet libre\nPrésentation individuelle d’un chapitre d’un livre sur les bonnes pratiques de la dataviz : Fundamentals of Data Visualization de Claus Wilke. Inscription ici.\n\n\nLe plan :\n\nPremiers pas avec R et Quarto\nManipuler des tableaux de données\nVisualiser des données avec ggplot2\nStatistiques descriptives pour un projet\nMini-projet d’analyse descriptive\nModèles de régression linéaire\n\nEn général pour R, regardez ce bon tutoriel sur le tidyverse.",
     "crumbs": [
       "Logiciel Statistique et Econométrique",
       "Introduction"
@@ -202,7 +202,7 @@
     "href": "CMI-LSE-TP3.html#la-grammaire-des-graphiques",
     "title": "TP3 : Visualiser des données avec ggplot2",
     "section": "",
-    "text": "ggplot(data) indique le tableau de données ;\nune fonction geom_*() indique la forme géométrique : points (geom_point), barres (geom_bar), boîtes à moustaches (geom_boxplot), lignes (geom_line), etc. ;\nla fonction aes() associe des variables du tableau à des propriétés visuelles : position (x, y), couleur (color, fill), taille (size), transparence (alpha).\n\n\n\n\n\n\n\n\n\nVariable\nDescription\n\n\n\n\ncommune\nNom de la commune\n\n\ndepartement\nDépartement\n\n\npop_tot\nPopulation totale\n\n\npop_cl\nTaille de la commune, en classes\n\n\ndipl_aucun\nPart des personnes sans diplôme (%)\n\n\ndipl_sup\nPart des diplômés du supérieur (%)\n\n\nouvr\nPart des ouvriers (%)\n\n\ncadres\nPart des cadres (%)\n\n\nchom\nPart des chômeurs dans la population active (%)\n\n\nproprio\nPart des ménages propriétaires de leur logement (%)\n\n\n\n\nCharger le jeu de données avec data(rp2018) et créer un tableau rp69 qui ne contient que les communes du Rhône et de la Loire. Représenter le pourcentage d’ouvriers (ouvr) en fonction du pourcentage de personnes sans diplôme (dipl_aucun) par un nuage de points. Commenter.\nRefaire le nuage de points avec des points rouges et une transparence de 0.2. Faire ensuite varier la couleur des points selon le département et leur taille selon la population. Quelle est la différence entre un argument placé dans aes() et un argument placé en dehors ?\nReprésenter la distribution du pourcentage de propriétaires selon la taille de la commune par des boîtes à moustaches, avec une couleur de remplissage (fill) par département. Commenter.\nReprésenter le nombre de communes par classe de taille avec geom_bar(), avec une couleur de remplissage par département. Modifier ensuite l’argument position de geom_bar() avec les valeurs \"dodge\" puis \"fill\". Que représente l’axe des ordonnées avec position = \"fill\" ?\nReprésenter le pourcentage de diplômés du supérieur en fonction du pourcentage de cadres, avec un graphique par département (facet_wrap()). Ajouter une droite de régression avec geom_smooth(method = \"lm\"). Commenter.\nReprésenter le pourcentage de personnes sans diplôme en fonction du taux de chômage. Afficher en rouge le nom des communes dont le taux de chômage dépasse 15 % avec geom_text(), en lui passant un tableau filtré dans l’argument data.",
+    "text": "ggplot(data) indique le tableau de données ;\nune fonction geom_*() indique la forme géométrique : points (geom_point), barres (geom_bar), boîtes à moustaches (geom_boxplot), lignes (geom_line), etc. ;\nla fonction aes() associe des variables du tableau à des propriétés visuelles : position (x, y), couleur (color, fill), taille (size), transparence (alpha).\n\n\n\n\n\nVariable\nDescription\n\n\n\n\ncommune\nNom de la commune\n\n\ndepartement\nDépartement\n\n\npop_tot\nPopulation totale\n\n\npop_cl\nTaille de la commune, en classes\n\n\ndipl_aucun\nPart des personnes sans diplôme (%)\n\n\ndipl_sup\nPart des diplômés du supérieur (%)\n\n\nouvr\nPart des ouvriers (%)\n\n\ncadres\nPart des cadres (%)\n\n\nchom\nPart des chômeurs dans la population active (%)\n\n\nproprio\nPart des ménages propriétaires de leur logement (%)\n\n\n\n\nCharger le jeu de données avec data(rp2018) et créer un tableau rp69 qui ne contient que les communes du Rhône et de la Loire. Représenter le pourcentage d’ouvriers (ouvr) en fonction du pourcentage de personnes sans diplôme (dipl_aucun) par un nuage de points. Commenter.\nRefaire le nuage de points avec des points rouges et une transparence de 0.2. Faire ensuite varier la couleur des points selon le département et leur taille selon la population. Quelle est la différence entre un argument placé dans aes() et un argument placé en dehors ?\nReprésenter la distribution du pourcentage de propriétaires selon la taille de la commune par des boîtes à moustaches, avec une couleur de remplissage (fill) par département. Commenter.\nReprésenter le nombre de communes par classe de taille avec geom_bar(), avec une couleur de remplissage par département. Modifier ensuite l’argument position de geom_bar() avec les valeurs \"dodge\" puis \"fill\". Que représente l’axe des ordonnées avec position = \"fill\" ?\nReprésenter le pourcentage de diplômés du supérieur en fonction du pourcentage de cadres, avec un graphique par département (facet_wrap()). Ajouter une droite de régression avec geom_smooth(method = \"lm\"). Commenter.\nReprésenter le pourcentage de personnes sans diplôme en fonction du taux de chômage. Afficher en rouge le nom des communes dont le taux de chômage dépasse 15 % avec geom_text(), en lui passant un tableau filtré dans l’argument data.",
     "crumbs": [
       "Logiciel Statistique et Econométrique",
       "TP3 : Visualiser des données avec `ggplot2`"
@@ -321,67 +321,133 @@
   {
     "objectID": "CMI-LSE-TP5.html",
     "href": "CMI-LSE-TP5.html",
-    "title": "TP5 : Modèles de régression linéaire",
+    "title": "TP5 : Mini-projet d’analyse descriptive",
     "section": "",
-    "text": "1. Régression simple\nCe TP présente l’estimation et l’interprétation des modèles de régression linéaire par les moindres carrés ordinaires (MCO) : régression simple, régression multiple, forme fonctionnelle et variables qualitatives, puis une application à la relation entre émissions de CO2 et niveau de vie.\nComme aux TP précédents, créer un projet RStudio TP5 avec les sous-dossiers code, data et figures, et rédiger les réponses dans code/TP5.qmd. Les régressions sont estimées avec la fonction feols() du package fixest, et comparées dans des tableaux produits par etable().\nOn étudie le rendement de l’éducation à partir du jeu de données wage1 du package wooldridge : 526 salariés américains interrogés en 1976.\nLe modèle de régression simple s’écrit :\n\\[wage_i = \\beta_0 + \\beta_1 educ_i + u_i\\]",
+    "text": "1. Choisir un jeu de données et une question\nCe TP est un mini-projet réalisé en classe, par groupes de deux ou trois. Chaque groupe choisit un jeu de données du projet TidyTuesday, se pose une question, y répond par une analyse descriptive et présente le résultat dans quelques slides réalisées avec Quarto.\nUne analyse de données ne part pas des données, mais d’une question. Sans question, on accumule des tableaux et des graphiques qui ne disent rien ; avec une question, on sait quelles variables regarder, quels graphiques faire et quand s’arrêter. À chaque étape du TP, le groupe doit donc se demander : quelle question pose-t-on, les données permettent-elles d’y répondre, et que répond-on ?\nChaque membre du groupe crée un projet RStudio TP5 avec les sous-dossiers code, data et figures, et explore les données dans code/TP5.qmd. Les slides sont rédigées dans code/TP5_slides.qmd, sur un seul ordinateur.\nDéroulé indicatif de la séance :\nTidyTuesday publie chaque semaine depuis 2018 un jeu de données réel, prêt à l’emploi. Chaque jeu de données a son propre dossier sur GitHub (par exemple data/2024/2024-05-21/), avec un fichier readme.md qui présente les données, donne le code R pour les importer (rubrique The Data) et décrit les variables (rubrique Data Dictionary). Le choix est libre ; quelques suggestions en lien avec l’économie, l’énergie ou l’environnement :\nUne bonne question est :",
     "crumbs": [
       "Logiciel Statistique et Econométrique",
-      "TP5 : Modèles de régression linéaire"
+      "TP5 : Mini-projet d'analyse descriptive"
     ]
   },
   {
-    "objectID": "CMI-LSE-TP5.html#régression-simple",
-    "href": "CMI-LSE-TP5.html#régression-simple",
-    "title": "TP5 : Modèles de régression linéaire",
+    "objectID": "CMI-LSE-TP5.html#choisir-un-jeu-de-données-et-une-question",
+    "href": "CMI-LSE-TP5.html#choisir-un-jeu-de-données-et-une-question",
+    "title": "TP5 : Mini-projet d’analyse descriptive",
     "section": "",
-    "text": "Variable\nDescription\n\n\n\n\nwage\nSalaire horaire moyen (en dollars)\n\n\nlwage\nLogarithme du salaire horaire\n\n\neduc\nNombre d’années d’études\n\n\nexper\nNombre d’années d’expérience professionnelle potentielle\n\n\ntenure\nNombre d’années d’ancienneté chez l’employeur actuel\n\n\nfemale\nVaut 1 si la personne est une femme, 0 sinon\n\n\n\n\n\n\nCharger le jeu de données avec data(wage1). Calculer le salaire horaire moyen et le nombre moyen d’années d’études. Représenter le salaire en fonction du nombre d’années d’études par un nuage de points, en ajoutant la droite de régression avec geom_smooth(method = \"lm\").\nEstimer le modèle avec feols(wage ~ educ, data = wage1) et afficher les résultats avec summary(). Interpréter \\(\\hat{\\beta}_1\\) et \\(\\hat{\\beta}_0\\). La constante a-t-elle un sens économique ?\nLe coefficient \\(\\hat{\\beta}_1\\) est-il significativement différent de zéro au seuil de 5 % ? Afficher son intervalle de confiance à 95 % avec confint() et l’interpréter.\nQuelle part de la variance des salaires le modèle explique-t-il ? Utiliser r2().\nCalculer avec predict() le salaire prédit pour une personne ayant 12 années d’études (fin du lycée), puis 16 années (licence). Ajouter au tableau les valeurs prédites (fitted()) et les résidus (resid()), puis vérifier que la moyenne des résidus est nulle.",
+    "text": "Jeu de données\nContenu\n\n\n\n\nSustainable Energy for All\nAccès à l’électricité et part des renouvelables, par pays et par année\n\n\nGlobal Health Spending\nDépenses de santé de 195 pays depuis 2000\n\n\nEuropean Parenting Leave Policies\nCongés maternité et parentaux dans 21 pays européens, de 1970 à 2024\n\n\nThe Cappuccino Index\nPrix d’un cappuccino dans différents pays, en temps de travail d’un barista\n\n\nWhich College Majors Are Safest From AI?\nSalaire et exposition à l’IA des filières universitaires américaines\n\n\nCarbon Majors Emissions\nÉmissions des grands producteurs de pétrole, de gaz, de charbon et de ciment depuis 1854\n\n\n\n\n\nprécise : elle porte sur une variable et une population bien identifiées ;\ndescriptive : elle demande « combien », « qui », « comment cela évolue » ou « en quoi deux groupes diffèrent », et non « quel est l’effet de… ? », question à laquelle une analyse descriptive ne permet pas de répondre ;\nréalisable : les variables nécessaires sont dans le jeu de données ;\nintéressante : on ne connaît pas la réponse à l’avance, et elle compte pour quelqu’un (un consommateur, une entreprise, un décideur public).\n\n\n\n\n\n\n\n\nQuestion\nDiagnostic\n\n\n\n\nQue disent les données sur les émissions de CO2 ?\nTrop vague\n\n\nLes politiques climatiques ont-elles réduit les émissions ?\nCausale\n\n\nQuels producteurs émettent le plus de CO2 : des entreprises privées, des entreprises publiques ou des États ?\nBonne question\n\n\n\n\nFormer un groupe de deux ou trois. Lire le readme.md de deux ou trois jeux de données qui intéressent le groupe, puis en choisir un.\nAvant d’ouvrir les données dans R, lister trois à cinq questions que ce jeu de données pourrait permettre de traiter.\nRetenir une question principale, et la découper en deux ou trois sous-questions. Pourquoi est-elle intéressante ? Quelles variables faut-il pour y répondre ? Quelle réponse attendez-vous ?\nImporter les données avec read_csv(), en copiant l’adresse donnée dans la rubrique The Data du readme.md, puis en enregistrer une copie dans le dossier data avec write_csv() et here().",
     "crumbs": [
       "Logiciel Statistique et Econométrique",
-      "TP5 : Modèles de régression linéaire"
+      "TP5 : Mini-projet d'analyse descriptive"
     ]
   },
   {
-    "objectID": "CMI-LSE-TP5.html#régression-multiple",
-    "href": "CMI-LSE-TP5.html#régression-multiple",
-    "title": "TP5 : Modèles de régression linéaire",
-    "section": "2. Régression multiple",
-    "text": "2. Régression multiple\nLa régression multiple permet d’isoler l’effet d’une variable en contrôlant les autres : chaque coefficient s’interprète « toutes choses égales par ailleurs ». Si une variable qui influence \\(y\\) et qui est corrélée à une variable explicative est omise, le coefficient de cette dernière est biaisé : c’est le biais de variable omise.\n\\[wage_i = \\beta_0 + \\beta_1 educ_i + \\beta_2 exper_i + \\beta_3 tenure_i + u_i\\]\n\nEstimer le modèle ci-dessus. Interpréter chacun des coefficients.\nComparer les résultats des régressions simple et multiple dans un tableau avec etable(). Comment évolue le coefficient de educ ? Calculer la corrélation entre educ et exper, puis expliquer cette évolution par le biais de variable omise.\nComparer le \\(R^2\\) et le \\(R^2\\) ajusté des deux modèles. Pourquoi le \\(R^2\\) ajusté est-il préférable pour comparer des modèles qui n’ont pas le même nombre de variables ?\nTester l’hypothèse nulle \\(H_0 : \\beta_2 = \\beta_3 = 0\\) avec la fonction wald(), argument keep = \"exper|tenure\". Conclure.\nPeut-on interpréter \\(\\hat{\\beta}_1\\) comme l’effet causal d’une année d’études supplémentaire sur le salaire ? Donner un exemple de variable omise qui pourrait encore biaiser ce coefficient, et le sens probable du biais.",
+    "objectID": "CMI-LSE-TP5.html#décrire-les-données",
+    "href": "CMI-LSE-TP5.html#décrire-les-données",
+    "title": "TP5 : Mini-projet d’analyse descriptive",
+    "section": "2. Décrire les données",
+    "text": "2. Décrire les données\nAvant de répondre à la question, il faut savoir ce que mesurent les données et vérifier qu’elles permettent d’y répondre.\n\nQui a produit ces données, et comment ont-elles été collectées ? S’appuyer sur le readme.md et sur les liens qu’il donne.\nAfficher la structure du tableau avec glimpse(). Que représente une ligne ? Combien y a-t-il d’observations, sur quelle période et sur quel champ ?\nConstruire le tableau de description des variables utiles à la question (nom, description en français, unité), au format Markdown.\nCompter les valeurs manquantes de chaque variable avec summarise() et across(), et repérer les anomalies (valeurs impossibles, unités différentes selon les lignes, lignes de total). Les données permettent-elles de répondre à la question ? Sinon, reformuler la question.",
     "crumbs": [
       "Logiciel Statistique et Econométrique",
-      "TP5 : Modèles de régression linéaire"
+      "TP5 : Mini-projet d'analyse descriptive"
     ]
   },
   {
-    "objectID": "CMI-LSE-TP5.html#forme-fonctionnelle-et-variables-qualitatives",
-    "href": "CMI-LSE-TP5.html#forme-fonctionnelle-et-variables-qualitatives",
-    "title": "TP5 : Modèles de régression linéaire",
-    "section": "3. Forme fonctionnelle et variables qualitatives",
-    "text": "3. Forme fonctionnelle et variables qualitatives\nLe modèle linéaire peut intégrer des relations non linéaires grâce à des transformations des variables :\n\n\n\n\n\n\n\n\nModèle\nÉquation\nInterprétation de \\(\\beta_1\\)\n\n\n\n\nNiveau-niveau\n\\(y = \\beta_0 + \\beta_1 x\\)\n\\(x\\) augmente d’une unité : \\(y\\) varie de \\(\\beta_1\\) unités\n\n\nLog-niveau\n\\(\\log(y) = \\beta_0 + \\beta_1 x\\)\n\\(x\\) augmente d’une unité : \\(y\\) varie d’environ \\(100 \\beta_1\\) %\n\n\nLog-log\n\\(\\log(y) = \\beta_0 + \\beta_1 \\log(x)\\)\n\\(x\\) augmente de 1 % : \\(y\\) varie de \\(\\beta_1\\) % (élasticité)\n\n\n\nUne variable indicatrice (0/1) mesure l’écart moyen entre deux groupes, à autres variables égales. Pour une variable qualitative à plusieurs modalités, feols() crée automatiquement une indicatrice par modalité, sauf pour la modalité de référence (la première). Lorsque la variable expliquée vaut 0 ou 1, un coefficient s’interprète comme une variation de probabilité, en points de pourcentage.\n\nEstimer le modèle précédent en remplaçant wage par lwage. Interpréter le coefficient de educ.\nCréer une variable exper2 égale au carré de l’expérience et l’ajouter au modèle de la question (i). Interpréter les signes des coefficients de exper et exper2. Calculer le nombre d’années d’expérience à partir duquel le salaire prédit commence à baisser : \\(-\\hat{\\beta}_{exper} / (2 \\hat{\\beta}_{exper2})\\). Quelle part de l’échantillon se trouve au-delà ?\nAjouter la variable female au modèle. Interpréter son coefficient, puis le comparer avec l’écart de salaire brut entre femmes et hommes, obtenu en régressant lwage sur female seulement. Commenter.\nPrésenter les trois modèles en log dans un même tableau avec etable(), en donnant des noms lisibles aux variables grâce à l’argument dict.\nOn revient aux données hdv2003 du TP4. Reprendre le code du TP4 pour créer la variable etudes, et créer une variable sportif qui vaut 1 si la personne pratique un sport et 0 sinon. Régresser sportif sur etudes. Interpréter la constante et le coefficient de la modalité « Supérieur ». Retrouve-t-on les résultats du TP4 ?\nAjouter l’âge, puis le sexe au modèle. Comment évolue le coefficient de « Supérieur » ? Que peut-on conclure sur le lien entre études et pratique sportive ?",
+    "objectID": "CMI-LSE-TP5.html#répondre-à-la-question",
+    "href": "CMI-LSE-TP5.html#répondre-à-la-question",
+    "title": "TP5 : Mini-projet d’analyse descriptive",
+    "section": "3. Répondre à la question",
+    "text": "3. Répondre à la question\nChaque sous-question reçoit sa réponse sous la forme d’un tableau ou d’un graphique, choisi selon la nature des variables (TP3 et TP4) : distribution d’une variable, comparaison entre groupes, évolution dans le temps, relation entre deux variables.\n\nPour chaque sous-question, produire le tableau ou le graphique qui y répond le plus directement. Les tableaux s’affichent avec knitr::kable().\nSoigner les graphiques : axes avec leurs unités, source des données (labs(caption = ...)), police lisible (theme_minimal(base_size = 16)).\nÉcrire la réponse à chaque sous-question en une phrase, appuyée sur un chiffre. Le résultat correspond-il à ce que vous attendiez ?\nQuelles sont les limites des données pour répondre à la question ? Quelles nouvelles questions les résultats soulèvent-ils ?",
     "crumbs": [
       "Logiciel Statistique et Econométrique",
-      "TP5 : Modèles de régression linéaire"
+      "TP5 : Mini-projet d'analyse descriptive"
     ]
   },
   {
-    "objectID": "CMI-LSE-TP5.html#application-la-courbe-de-kuznets-environnementale",
-    "href": "CMI-LSE-TP5.html#application-la-courbe-de-kuznets-environnementale",
-    "title": "TP5 : Modèles de régression linéaire",
-    "section": "4. Application : la courbe de Kuznets environnementale",
-    "text": "4. Application : la courbe de Kuznets environnementale\nSelon l’hypothèse de la courbe de Kuznets environnementale (Grossman et Krueger, 1995), la pollution augmente avec le niveau de vie aux premiers stades du développement, puis diminue au-delà d’un certain revenu, grâce aux changements de structure productive, aux technologies plus propres et à la demande de qualité environnementale. La relation entre émissions et revenu prendrait la forme d’un U inversé :\n\\[co2\\_hab_i = \\beta_0 + \\beta_1 pib\\_hab_i + \\beta_2 pib\\_hab_i^2 + u_i\\]\navec \\(\\beta_1 &gt; 0\\) et \\(\\beta_2 &lt; 0\\). Le revenu à partir duquel les émissions diminuent est alors \\(pib^* = -\\beta_1 / (2 \\beta_2)\\). On teste cette hypothèse en coupe transversale sur les pays du monde en 2022, avec les données d’Our World in Data utilisées aux TP2 et TP3.\n\nCopier dans le dossier data les fichiers owid-co2-data.csv et continents.csv des TP précédents. Construire un tableau co2_2022 qui contient les pays (rattachés à un continent) en 2022, avec le PIB par habitant en milliers de dollars (pib_hab), son carré (pib_hab2) et les émissions par habitant, en retirant les observations manquantes.\nEstimer le modèle linéaire co2_per_capita ~ pib_hab. Interpréter le coefficient et le \\(R^2\\).\nEstimer le modèle quadratique ci-dessus. Les signes et la significativité des coefficients sont-ils compatibles avec une courbe de Kuznets ?\nReprésenter le nuage de points avec la courbe estimée : geom_smooth(method = \"lm\", formula = y ~ x + I(x^2)). Quel pays se distingue ? Ré-estimer le modèle quadratique sans ce pays et calculer \\(pib^*\\). Combien de pays ont un PIB par habitant supérieur à \\(pib^*\\) ? Que conclure sur la robustesse du résultat ?\nEstimer le modèle en log-log : \\(\\log(co2\\_hab) = \\beta_0 + \\beta_1 \\log(pib\\_hab) + u\\). Interpréter \\(\\beta_1\\). Ajouter le carré de \\(\\log(pib\\_hab)\\) et calculer le revenu de retournement correspondant, \\(\\exp(-\\beta_1 / (2 \\beta_2))\\). Commenter.\nAu vu de ces résultats, peut-on conclure que la croissance économique finira par réduire les émissions de CO2 ? Discuter au moins trois limites de cette analyse.",
+    "objectID": "CMI-LSE-TP5.html#préparer-les-slides",
+    "href": "CMI-LSE-TP5.html#préparer-les-slides",
+    "title": "TP5 : Mini-projet d’analyse descriptive",
+    "section": "4. Préparer les slides",
+    "text": "4. Préparer les slides\nLes slides suivent le plan de l’analyse, en trois parties :\n\nLa question : la question principale, les sous-questions, et pourquoi elles sont intéressantes ;\nLes données : source, ce que représente une ligne, période, nombre d’observations, variables utilisées ;\nLes résultats : une slide par sous-question, avec un tableau ou un graphique, et un titre qui donne la réponse.\n\nQuarto produit des slides au format HTML avec format: revealjs : chaque titre de niveau 2 (##) commence une nouvelle slide. Dans l’en-tête, echo: false masque le code de tous les chunks, et embed-resources: true produit un fichier HTML autonome. Modèle de document :\n---\ntitle: \"La question principale\"\nauthor: \"Prénom Nom, Prénom Nom, Prénom Nom\"\nformat:\n  revealjs:\n    embed-resources: true\nexecute:\n  echo: false\n  warning: false\n  message: false\n---\n\n```{r}\nlibrary(tidyverse)\nlibrary(here)\n\ndonnees &lt;- read_csv(here(\"data\", \"nom_du_fichier.csv\"))\n```\n\n## La question\n\n- Question principale et sous-questions\n- Pourquoi elles sont intéressantes\n\n## Les données\n\n- Source : ...\n- Une ligne correspond à ...\n- `r nrow(donnees)` observations, de ... à ...\n\n## Un titre qui donne la réponse\n\n```{r}\nggplot(donnees) +\n  geom_col(aes(x = ..., y = ...)) +\n  labs(x = \"...\", y = \"...\", caption = \"Source : ...\") +\n  theme_minimal(base_size = 16)\n```\n\nCréer le document code/TP5_slides.qmd à partir de ce modèle et le compiler. Ouvrir le fichier HTML produit dans un navigateur : les flèches du clavier permettent de passer d’une slide à l’autre.\nRédiger cinq à sept slides en suivant le plan question, données, résultats. Le titre de chaque slide de résultat donne la réponse (« Dix producteurs émettent 60 % du total ») plutôt que le contenu (« Graphique 2 »).\nRelire les slides en se mettant à la place du public : la question est-elle claire ? Chaque résultat y répond-il ? Supprimer ce qui n’y répond pas.",
     "crumbs": [
       "Logiciel Statistique et Econométrique",
-      "TP5 : Modèles de régression linéaire"
+      "TP5 : Mini-projet d'analyse descriptive"
     ]
   },
   {
     "objectID": "CMI-LSE-TP5.html#rendu",
     "href": "CMI-LSE-TP5.html#rendu",
-    "title": "TP5 : Modèles de régression linéaire",
+    "title": "TP5 : Mini-projet d’analyse descriptive",
     "section": "5. Rendu",
-    "text": "5. Rendu\nCompiler le document complet. Il doit se compiler sans erreur après un redémarrage de R (Session &gt; Restart R). Déposer le fichier TP5.html sur CEL.",
+    "text": "5. Rendu\nCompiler les slides. Le document doit se compiler sans erreur après un redémarrage de R (Session &gt; Restart R). Un membre du groupe dépose le fichier TP5_slides.html sur CEL, après avoir indiqué le nom de tous les membres du groupe dans l’en-tête YAML (author).",
     "crumbs": [
       "Logiciel Statistique et Econométrique",
-      "TP5 : Modèles de régression linéaire"
+      "TP5 : Mini-projet d'analyse descriptive"
+    ]
+  },
+  {
+    "objectID": "CMI-LSE-TP6.html",
+    "href": "CMI-LSE-TP6.html",
+    "title": "TP6 : Modèles de régression linéaire",
+    "section": "",
+    "text": "1. Régression simple\nCe TP présente l’estimation et l’interprétation des modèles de régression linéaire par les moindres carrés ordinaires (MCO) : régression simple, régression multiple, forme fonctionnelle et variables qualitatives, puis une application à la relation entre émissions de CO2 et niveau de vie.\nComme aux TP précédents, créer un projet RStudio TP6 avec les sous-dossiers code, data et figures, et rédiger les réponses dans code/TP6.qmd. Les régressions sont estimées avec la fonction feols() du package fixest, et comparées dans des tableaux produits par etable().\nOn étudie le rendement de l’éducation à partir du jeu de données wage1 du package wooldridge : 526 salariés américains interrogés en 1976.\nLe modèle de régression simple s’écrit :\n\\[wage_i = \\beta_0 + \\beta_1 educ_i + u_i\\]",
+    "crumbs": [
+      "Logiciel Statistique et Econométrique",
+      "TP6 : Modèles de régression linéaire"
+    ]
+  },
+  {
+    "objectID": "CMI-LSE-TP6.html#régression-simple",
+    "href": "CMI-LSE-TP6.html#régression-simple",
+    "title": "TP6 : Modèles de régression linéaire",
+    "section": "",
+    "text": "Variable\nDescription\n\n\n\n\nwage\nSalaire horaire moyen (en dollars)\n\n\nlwage\nLogarithme du salaire horaire\n\n\neduc\nNombre d’années d’études\n\n\nexper\nNombre d’années d’expérience professionnelle potentielle\n\n\ntenure\nNombre d’années d’ancienneté chez l’employeur actuel\n\n\nfemale\nVaut 1 si la personne est une femme, 0 sinon\n\n\n\n\n\n\nCharger le jeu de données avec data(wage1). Calculer le salaire horaire moyen et le nombre moyen d’années d’études. Représenter le salaire en fonction du nombre d’années d’études par un nuage de points, en ajoutant la droite de régression avec geom_smooth(method = \"lm\").\nEstimer le modèle avec feols(wage ~ educ, data = wage1) et afficher les résultats avec summary(). Interpréter \\(\\hat{\\beta}_1\\) et \\(\\hat{\\beta}_0\\). La constante a-t-elle un sens économique ?\nLe coefficient \\(\\hat{\\beta}_1\\) est-il significativement différent de zéro au seuil de 5 % ? Afficher son intervalle de confiance à 95 % avec confint() et l’interpréter.\nQuelle part de la variance des salaires le modèle explique-t-il ? Utiliser r2().\nCalculer avec predict() le salaire prédit pour une personne ayant 12 années d’études (fin du lycée), puis 16 années (licence). Ajouter au tableau les valeurs prédites (fitted()) et les résidus (resid()), puis vérifier que la moyenne des résidus est nulle.",
+    "crumbs": [
+      "Logiciel Statistique et Econométrique",
+      "TP6 : Modèles de régression linéaire"
+    ]
+  },
+  {
+    "objectID": "CMI-LSE-TP6.html#régression-multiple",
+    "href": "CMI-LSE-TP6.html#régression-multiple",
+    "title": "TP6 : Modèles de régression linéaire",
+    "section": "2. Régression multiple",
+    "text": "2. Régression multiple\nLa régression multiple permet d’isoler l’effet d’une variable en contrôlant les autres : chaque coefficient s’interprète « toutes choses égales par ailleurs ». Si une variable qui influence \\(y\\) et qui est corrélée à une variable explicative est omise, le coefficient de cette dernière est biaisé : c’est le biais de variable omise.\n\\[wage_i = \\beta_0 + \\beta_1 educ_i + \\beta_2 exper_i + \\beta_3 tenure_i + u_i\\]\n\nEstimer le modèle ci-dessus. Interpréter chacun des coefficients.\nComparer les résultats des régressions simple et multiple dans un tableau avec etable(). Comment évolue le coefficient de educ ? Calculer la corrélation entre educ et exper, puis expliquer cette évolution par le biais de variable omise.\nComparer le \\(R^2\\) et le \\(R^2\\) ajusté des deux modèles. Pourquoi le \\(R^2\\) ajusté est-il préférable pour comparer des modèles qui n’ont pas le même nombre de variables ?\nTester l’hypothèse nulle \\(H_0 : \\beta_2 = \\beta_3 = 0\\) avec la fonction wald(), argument keep = \"exper|tenure\". Conclure.\nPeut-on interpréter \\(\\hat{\\beta}_1\\) comme l’effet causal d’une année d’études supplémentaire sur le salaire ? Donner un exemple de variable omise qui pourrait encore biaiser ce coefficient, et le sens probable du biais.",
+    "crumbs": [
+      "Logiciel Statistique et Econométrique",
+      "TP6 : Modèles de régression linéaire"
+    ]
+  },
+  {
+    "objectID": "CMI-LSE-TP6.html#forme-fonctionnelle-et-variables-qualitatives",
+    "href": "CMI-LSE-TP6.html#forme-fonctionnelle-et-variables-qualitatives",
+    "title": "TP6 : Modèles de régression linéaire",
+    "section": "3. Forme fonctionnelle et variables qualitatives",
+    "text": "3. Forme fonctionnelle et variables qualitatives\nLe modèle linéaire peut intégrer des relations non linéaires grâce à des transformations des variables :\n\n\n\n\n\n\n\n\nModèle\nÉquation\nInterprétation de \\(\\beta_1\\)\n\n\n\n\nNiveau-niveau\n\\(y = \\beta_0 + \\beta_1 x\\)\n\\(x\\) augmente d’une unité : \\(y\\) varie de \\(\\beta_1\\) unités\n\n\nLog-niveau\n\\(\\log(y) = \\beta_0 + \\beta_1 x\\)\n\\(x\\) augmente d’une unité : \\(y\\) varie d’environ \\(100 \\beta_1\\) %\n\n\nLog-log\n\\(\\log(y) = \\beta_0 + \\beta_1 \\log(x)\\)\n\\(x\\) augmente de 1 % : \\(y\\) varie de \\(\\beta_1\\) % (élasticité)\n\n\n\nUne variable indicatrice (0/1) mesure l’écart moyen entre deux groupes, à autres variables égales. Pour une variable qualitative à plusieurs modalités, feols() crée automatiquement une indicatrice par modalité, sauf pour la modalité de référence (la première). Lorsque la variable expliquée vaut 0 ou 1, un coefficient s’interprète comme une variation de probabilité, en points de pourcentage.\n\nEstimer le modèle précédent en remplaçant wage par lwage. Interpréter le coefficient de educ.\nCréer une variable exper2 égale au carré de l’expérience et l’ajouter au modèle de la question (i). Interpréter les signes des coefficients de exper et exper2. Calculer le nombre d’années d’expérience à partir duquel le salaire prédit commence à baisser : \\(-\\hat{\\beta}_{exper} / (2 \\hat{\\beta}_{exper2})\\). Quelle part de l’échantillon se trouve au-delà ?\nAjouter la variable female au modèle. Interpréter son coefficient, puis le comparer avec l’écart de salaire brut entre femmes et hommes, obtenu en régressant lwage sur female seulement. Commenter.\nPrésenter les trois modèles en log dans un même tableau avec etable(), en donnant des noms lisibles aux variables grâce à l’argument dict.\nOn revient aux données hdv2003 du TP4. Reprendre le code du TP4 pour créer la variable etudes, et créer une variable sportif qui vaut 1 si la personne pratique un sport et 0 sinon. Régresser sportif sur etudes. Interpréter la constante et le coefficient de la modalité « Supérieur ». Retrouve-t-on les résultats du TP4 ?\nAjouter l’âge, puis le sexe au modèle. Comment évolue le coefficient de « Supérieur » ? Que peut-on conclure sur le lien entre études et pratique sportive ?",
+    "crumbs": [
+      "Logiciel Statistique et Econométrique",
+      "TP6 : Modèles de régression linéaire"
+    ]
+  },
+  {
+    "objectID": "CMI-LSE-TP6.html#application-la-courbe-de-kuznets-environnementale",
+    "href": "CMI-LSE-TP6.html#application-la-courbe-de-kuznets-environnementale",
+    "title": "TP6 : Modèles de régression linéaire",
+    "section": "4. Application : la courbe de Kuznets environnementale",
+    "text": "4. Application : la courbe de Kuznets environnementale\nSelon l’hypothèse de la courbe de Kuznets environnementale (Grossman et Krueger, 1995), la pollution augmente avec le niveau de vie aux premiers stades du développement, puis diminue au-delà d’un certain revenu, grâce aux changements de structure productive, aux technologies plus propres et à la demande de qualité environnementale. La relation entre émissions et revenu prendrait la forme d’un U inversé :\n\\[co2\\_hab_i = \\beta_0 + \\beta_1 pib\\_hab_i + \\beta_2 pib\\_hab_i^2 + u_i\\]\navec \\(\\beta_1 &gt; 0\\) et \\(\\beta_2 &lt; 0\\). Le revenu à partir duquel les émissions diminuent est alors \\(pib^* = -\\beta_1 / (2 \\beta_2)\\). On teste cette hypothèse en coupe transversale sur les pays du monde en 2022, avec les données d’Our World in Data utilisées aux TP2 et TP3.\n\nCopier dans le dossier data les fichiers owid-co2-data.csv et continents.csv des TP précédents. Construire un tableau co2_2022 qui contient les pays (rattachés à un continent) en 2022, avec le PIB par habitant en milliers de dollars (pib_hab), son carré (pib_hab2) et les émissions par habitant, en retirant les observations manquantes.\nEstimer le modèle linéaire co2_per_capita ~ pib_hab. Interpréter le coefficient et le \\(R^2\\).\nEstimer le modèle quadratique ci-dessus. Les signes et la significativité des coefficients sont-ils compatibles avec une courbe de Kuznets ?\nReprésenter le nuage de points avec la courbe estimée : geom_smooth(method = \"lm\", formula = y ~ x + I(x^2)). Quel pays se distingue ? Ré-estimer le modèle quadratique sans ce pays et calculer \\(pib^*\\). Combien de pays ont un PIB par habitant supérieur à \\(pib^*\\) ? Que conclure sur la robustesse du résultat ?\nEstimer le modèle en log-log : \\(\\log(co2\\_hab) = \\beta_0 + \\beta_1 \\log(pib\\_hab) + u\\). Interpréter \\(\\beta_1\\). Ajouter le carré de \\(\\log(pib\\_hab)\\) et calculer le revenu de retournement correspondant, \\(\\exp(-\\beta_1 / (2 \\beta_2))\\). Commenter.\nAu vu de ces résultats, peut-on conclure que la croissance économique finira par réduire les émissions de CO2 ? Discuter au moins trois limites de cette analyse.",
+    "crumbs": [
+      "Logiciel Statistique et Econométrique",
+      "TP6 : Modèles de régression linéaire"
+    ]
+  },
+  {
+    "objectID": "CMI-LSE-TP6.html#rendu",
+    "href": "CMI-LSE-TP6.html#rendu",
+    "title": "TP6 : Modèles de régression linéaire",
+    "section": "5. Rendu",
+    "text": "5. Rendu\nCompiler le document complet. Il doit se compiler sans erreur après un redémarrage de R (Session &gt; Restart R). Déposer le fichier TP6.html sur CEL.",
+    "crumbs": [
+      "Logiciel Statistique et Econométrique",
+      "TP6 : Modèles de régression linéaire"
     ]
   },
   {

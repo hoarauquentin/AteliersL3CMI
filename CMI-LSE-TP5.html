@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>TP5 : Modèles de régression linéaire – Ateliers L3 CMI</title>
+<title>TP5 : Mini-projet d’analyse descriptive – Ateliers L3 CMI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -60,7 +60,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
-<link href="./CMI-SIG-intro.html" rel="next">
+<link href="./CMI-LSE-TP6.html" rel="next">
 <link href="./CMI-LSE-TP4.html" rel="prev">
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
@@ -94,35 +94,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -306,7 +277,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./CMI-LSE-intro.html">Logiciel Statistique et Econométrique</a></li><li class="breadcrumb-item"><a href="./CMI-LSE-TP5.html">TP5 : Modèles de régression linéaire</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./CMI-LSE-intro.html">Logiciel Statistique et Econométrique</a></li><li class="breadcrumb-item"><a href="./CMI-LSE-TP5.html">TP5 : Mini-projet d’analyse descriptive</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -398,7 +369,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./CMI-LSE-TP5.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">TP5 : Modèles de régression linéaire</span></a>
+ <span class="menu-text">TP5 : Mini-projet d’analyse descriptive</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./CMI-LSE-TP6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">TP6 : Modèles de régression linéaire</span></a>
   </div>
 </li>
       </ul>
@@ -448,10 +425,10 @@ window.Quarto = {
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#régression-simple" id="toc-régression-simple" class="nav-link active" data-scroll-target="#régression-simple">1. Régression simple</a></li>
-  <li><a href="#régression-multiple" id="toc-régression-multiple" class="nav-link" data-scroll-target="#régression-multiple">2. Régression multiple</a></li>
-  <li><a href="#forme-fonctionnelle-et-variables-qualitatives" id="toc-forme-fonctionnelle-et-variables-qualitatives" class="nav-link" data-scroll-target="#forme-fonctionnelle-et-variables-qualitatives">3. Forme fonctionnelle et variables qualitatives</a></li>
-  <li><a href="#application-la-courbe-de-kuznets-environnementale" id="toc-application-la-courbe-de-kuznets-environnementale" class="nav-link" data-scroll-target="#application-la-courbe-de-kuznets-environnementale">4. Application : la courbe de Kuznets environnementale</a></li>
+  <li><a href="#choisir-un-jeu-de-données-et-une-question" id="toc-choisir-un-jeu-de-données-et-une-question" class="nav-link active" data-scroll-target="#choisir-un-jeu-de-données-et-une-question">1. Choisir un jeu de données et une question</a></li>
+  <li><a href="#décrire-les-données" id="toc-décrire-les-données" class="nav-link" data-scroll-target="#décrire-les-données">2. Décrire les données</a></li>
+  <li><a href="#répondre-à-la-question" id="toc-répondre-à-la-question" class="nav-link" data-scroll-target="#répondre-à-la-question">3. Répondre à la question</a></li>
+  <li><a href="#préparer-les-slides" id="toc-préparer-les-slides" class="nav-link" data-scroll-target="#préparer-les-slides">4. Préparer les slides</a></li>
   <li><a href="#rendu" id="toc-rendu" class="nav-link" data-scroll-target="#rendu">5. Rendu</a></li>
   </ul>
 </nav>
@@ -460,9 +437,9 @@ window.Quarto = {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./CMI-LSE-intro.html">Logiciel Statistique et Econométrique</a></li><li class="breadcrumb-item"><a href="./CMI-LSE-TP5.html">TP5 : Modèles de régression linéaire</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./CMI-LSE-intro.html">Logiciel Statistique et Econométrique</a></li><li class="breadcrumb-item"><a href="./CMI-LSE-TP5.html">TP5 : Mini-projet d’analyse descriptive</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">TP5 : Modèles de régression linéaire</h1>
+<h1 class="title">TP5 : Mini-projet d’analyse descriptive</h1>
 </div>
 
 
@@ -483,137 +460,191 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">eval=</span><span class="cn">FALSE</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fixest)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wooldridge)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(questionr)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Ce TP présente l’estimation et l’interprétation des modèles de régression linéaire par les moindres carrés ordinaires (MCO) : régression simple, régression multiple, forme fonctionnelle et variables qualitatives, puis une application à la relation entre émissions de CO2 et niveau de vie.</p>
-<p>Comme aux TP précédents, créer un projet RStudio <code>TP5</code> avec les sous-dossiers <code>code</code>, <code>data</code> et <code>figures</code>, et rédiger les réponses dans <code>code/TP5.qmd</code>. Les régressions sont estimées avec la fonction <code>feols()</code> du package <code>fixest</code>, et comparées dans des tableaux produits par <code>etable()</code>.</p>
-<section id="régression-simple" class="level2">
-<h2 class="anchored" data-anchor-id="régression-simple">1. Régression simple</h2>
-<p>On étudie le rendement de l’éducation à partir du jeu de données <code>wage1</code> du package <code>wooldridge</code> : 526 salariés américains interrogés en 1976.</p>
+<p>Ce TP est un mini-projet réalisé en classe, par groupes de deux ou trois. Chaque groupe choisit un jeu de données du projet <a href="https://github.com/rfordatascience/tidytuesday">TidyTuesday</a>, se pose une question, y répond par une analyse descriptive et présente le résultat dans quelques slides réalisées avec Quarto.</p>
+<p>Une analyse de données ne part pas des données, mais d’une <strong>question</strong>. Sans question, on accumule des tableaux et des graphiques qui ne disent rien ; avec une question, on sait quelles variables regarder, quels graphiques faire et quand s’arrêter. À chaque étape du TP, le groupe doit donc se demander : quelle question pose-t-on, les données permettent-elles d’y répondre, et que répond-on ?</p>
+<p>Chaque membre du groupe crée un projet RStudio <code>TP5</code> avec les sous-dossiers <code>code</code>, <code>data</code> et <code>figures</code>, et explore les données dans <code>code/TP5.qmd</code>. Les slides sont rédigées dans <code>code/TP5_slides.qmd</code>, sur un seul ordinateur.</p>
+<p>Déroulé indicatif de la séance :</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 13%">
-<col style="width: 86%">
-</colgroup>
 <thead>
 <tr class="header">
-<th>Variable</th>
-<th>Description</th>
+<th>Étape</th>
+<th>Durée indicative</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>wage</code></td>
-<td>Salaire horaire moyen (en dollars)</td>
+<td>1. Choisir un jeu de données et une question</td>
+<td>10 min</td>
 </tr>
 <tr class="even">
-<td><code>lwage</code></td>
-<td>Logarithme du salaire horaire</td>
+<td>2. Décrire les données</td>
+<td>30 min</td>
 </tr>
 <tr class="odd">
-<td><code>educ</code></td>
-<td>Nombre d’années d’études</td>
+<td>3. Répondre à la question</td>
+<td>50 min</td>
 </tr>
 <tr class="even">
-<td><code>exper</code></td>
-<td>Nombre d’années d’expérience professionnelle potentielle</td>
-</tr>
-<tr class="odd">
-<td><code>tenure</code></td>
-<td>Nombre d’années d’ancienneté chez l’employeur actuel</td>
-</tr>
-<tr class="even">
-<td><code>female</code></td>
-<td>Vaut 1 si la personne est une femme, 0 sinon</td>
+<td>4. Préparer les slides</td>
+<td>20 min</td>
 </tr>
 </tbody>
 </table>
-<p>Le modèle de régression simple s’écrit :</p>
-<p><span class="math display">\[wage_i = \beta_0 + \beta_1 educ_i + u_i\]</span></p>
-<ol type="i">
-<li><p>Charger le jeu de données avec <code>data(wage1)</code>. Calculer le salaire horaire moyen et le nombre moyen d’années d’études. Représenter le salaire en fonction du nombre d’années d’études par un nuage de points, en ajoutant la droite de régression avec <code>geom_smooth(method = "lm")</code>.</p></li>
-<li><p>Estimer le modèle avec <code>feols(wage ~ educ, data = wage1)</code> et afficher les résultats avec <code>summary()</code>. Interpréter <span class="math inline">\(\hat{\beta}_1\)</span> et <span class="math inline">\(\hat{\beta}_0\)</span>. La constante a-t-elle un sens économique ?</p></li>
-<li><p>Le coefficient <span class="math inline">\(\hat{\beta}_1\)</span> est-il significativement différent de zéro au seuil de 5 % ? Afficher son intervalle de confiance à 95 % avec <code>confint()</code> et l’interpréter.</p></li>
-<li><p>Quelle part de la variance des salaires le modèle explique-t-il ? Utiliser <code>r2()</code>.</p></li>
-<li><p>Calculer avec <code>predict()</code> le salaire prédit pour une personne ayant 12 années d’études (fin du lycée), puis 16 années (licence). Ajouter au tableau les valeurs prédites (<code>fitted()</code>) et les résidus (<code>resid()</code>), puis vérifier que la moyenne des résidus est nulle.</p></li>
-</ol>
-</section>
-<section id="régression-multiple" class="level2">
-<h2 class="anchored" data-anchor-id="régression-multiple">2. Régression multiple</h2>
-<p>La régression multiple permet d’isoler l’effet d’une variable en contrôlant les autres : chaque coefficient s’interprète « toutes choses égales par ailleurs ». Si une variable qui influence <span class="math inline">\(y\)</span> et qui est corrélée à une variable explicative est omise, le coefficient de cette dernière est biaisé : c’est le <strong>biais de variable omise</strong>.</p>
-<p><span class="math display">\[wage_i = \beta_0 + \beta_1 educ_i + \beta_2 exper_i + \beta_3 tenure_i + u_i\]</span></p>
-<ol type="i">
-<li><p>Estimer le modèle ci-dessus. Interpréter chacun des coefficients.</p></li>
-<li><p>Comparer les résultats des régressions simple et multiple dans un tableau avec <code>etable()</code>. Comment évolue le coefficient de <code>educ</code> ? Calculer la corrélation entre <code>educ</code> et <code>exper</code>, puis expliquer cette évolution par le biais de variable omise.</p></li>
-<li><p>Comparer le <span class="math inline">\(R^2\)</span> et le <span class="math inline">\(R^2\)</span> ajusté des deux modèles. Pourquoi le <span class="math inline">\(R^2\)</span> ajusté est-il préférable pour comparer des modèles qui n’ont pas le même nombre de variables ?</p></li>
-<li><p>Tester l’hypothèse nulle <span class="math inline">\(H_0 : \beta_2 = \beta_3 = 0\)</span> avec la fonction <code>wald()</code>, argument <code>keep = "exper|tenure"</code>. Conclure.</p></li>
-<li><p>Peut-on interpréter <span class="math inline">\(\hat{\beta}_1\)</span> comme l’effet causal d’une année d’études supplémentaire sur le salaire ? Donner un exemple de variable omise qui pourrait encore biaiser ce coefficient, et le sens probable du biais.</p></li>
-</ol>
-</section>
-<section id="forme-fonctionnelle-et-variables-qualitatives" class="level2">
-<h2 class="anchored" data-anchor-id="forme-fonctionnelle-et-variables-qualitatives">3. Forme fonctionnelle et variables qualitatives</h2>
-<p>Le modèle linéaire peut intégrer des relations non linéaires grâce à des transformations des variables :</p>
+<section id="choisir-un-jeu-de-données-et-une-question" class="level2">
+<h2 class="anchored" data-anchor-id="choisir-un-jeu-de-données-et-une-question">1. Choisir un jeu de données et une question</h2>
+<p>TidyTuesday publie chaque semaine depuis 2018 un jeu de données réel, prêt à l’emploi. Chaque jeu de données a son propre dossier sur GitHub (par exemple <code>data/2024/2024-05-21/</code>), avec un fichier <code>readme.md</code> qui présente les données, donne le code R pour les importer (rubrique <em>The Data</em>) et décrit les variables (rubrique <em>Data Dictionary</em>). Le choix est libre ; quelques suggestions en lien avec l’économie, l’énergie ou l’environnement :</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 11%">
-<col style="width: 30%">
-<col style="width: 57%">
-</colgroup>
 <thead>
 <tr class="header">
-<th>Modèle</th>
-<th>Équation</th>
-<th>Interprétation de <span class="math inline">\(\beta_1\)</span></th>
+<th>Jeu de données</th>
+<th>Contenu</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Niveau-niveau</td>
-<td><span class="math inline">\(y = \beta_0 + \beta_1 x\)</span></td>
-<td><span class="math inline">\(x\)</span> augmente d’une unité : <span class="math inline">\(y\)</span> varie de <span class="math inline">\(\beta_1\)</span> unités</td>
+<td><a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2026/2026-05-26">Sustainable Energy for All</a></td>
+<td>Accès à l’électricité et part des renouvelables, par pays et par année</td>
 </tr>
 <tr class="even">
-<td>Log-niveau</td>
-<td><span class="math inline">\(\log(y) = \beta_0 + \beta_1 x\)</span></td>
-<td><span class="math inline">\(x\)</span> augmente d’une unité : <span class="math inline">\(y\)</span> varie d’environ <span class="math inline">\(100 \beta_1\)</span> %</td>
+<td><a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2026/2026-04-21">Global Health Spending</a></td>
+<td>Dépenses de santé de 195 pays depuis 2000</td>
 </tr>
 <tr class="odd">
-<td>Log-log</td>
-<td><span class="math inline">\(\log(y) = \beta_0 + \beta_1 \log(x)\)</span></td>
-<td><span class="math inline">\(x\)</span> augmente de 1 % : <span class="math inline">\(y\)</span> varie de <span class="math inline">\(\beta_1\)</span> % (élasticité)</td>
+<td><a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2026/2026-06-02">European Parenting Leave Policies</a></td>
+<td>Congés maternité et parentaux dans 21 pays européens, de 1970 à 2024</td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2026/2026-09-08">The Cappuccino Index</a></td>
+<td>Prix d’un cappuccino dans différents pays, en temps de travail d’un barista</td>
+</tr>
+<tr class="odd">
+<td><a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2026/2026-10-20">Which College Majors Are Safest From AI?</a></td>
+<td>Salaire et exposition à l’IA des filières universitaires américaines</td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2024/2024-05-21">Carbon Majors Emissions</a></td>
+<td>Émissions des grands producteurs de pétrole, de gaz, de charbon et de ciment depuis 1854</td>
 </tr>
 </tbody>
 </table>
-<p>Une variable indicatrice (0/1) mesure l’écart moyen entre deux groupes, à autres variables égales. Pour une variable qualitative à plusieurs modalités, <code>feols()</code> crée automatiquement une indicatrice par modalité, sauf pour la modalité de référence (la première). Lorsque la variable expliquée vaut 0 ou 1, un coefficient s’interprète comme une variation de probabilité, en points de pourcentage.</p>
+<p>Une bonne question est :</p>
+<ul>
+<li><strong>précise</strong> : elle porte sur une variable et une population bien identifiées ;</li>
+<li><strong>descriptive</strong> : elle demande « combien », « qui », « comment cela évolue » ou « en quoi deux groupes diffèrent », et non « quel est l’effet de… ? », question à laquelle une analyse descriptive ne permet pas de répondre ;</li>
+<li><strong>réalisable</strong> : les variables nécessaires sont dans le jeu de données ;</li>
+<li><strong>intéressante</strong> : on ne connaît pas la réponse à l’avance, et elle compte pour quelqu’un (un consommateur, une entreprise, un décideur public).</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>Diagnostic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Que disent les données sur les émissions de CO2 ?</td>
+<td>Trop vague</td>
+</tr>
+<tr class="even">
+<td>Les politiques climatiques ont-elles réduit les émissions ?</td>
+<td>Causale</td>
+</tr>
+<tr class="odd">
+<td>Quels producteurs émettent le plus de CO2 : des entreprises privées, des entreprises publiques ou des États ?</td>
+<td>Bonne question</td>
+</tr>
+</tbody>
+</table>
 <ol type="i">
-<li><p>Estimer le modèle précédent en remplaçant <code>wage</code> par <code>lwage</code>. Interpréter le coefficient de <code>educ</code>.</p></li>
-<li><p>Créer une variable <code>exper2</code> égale au carré de l’expérience et l’ajouter au modèle de la question (i). Interpréter les signes des coefficients de <code>exper</code> et <code>exper2</code>. Calculer le nombre d’années d’expérience à partir duquel le salaire prédit commence à baisser : <span class="math inline">\(-\hat{\beta}_{exper} / (2 \hat{\beta}_{exper2})\)</span>. Quelle part de l’échantillon se trouve au-delà ?</p></li>
-<li><p>Ajouter la variable <code>female</code> au modèle. Interpréter son coefficient, puis le comparer avec l’écart de salaire brut entre femmes et hommes, obtenu en régressant <code>lwage</code> sur <code>female</code> seulement. Commenter.</p></li>
-<li><p>Présenter les trois modèles en log dans un même tableau avec <code>etable()</code>, en donnant des noms lisibles aux variables grâce à l’argument <code>dict</code>.</p></li>
-<li><p>On revient aux données <code>hdv2003</code> du TP4. Reprendre le code du TP4 pour créer la variable <code>etudes</code>, et créer une variable <code>sportif</code> qui vaut 1 si la personne pratique un sport et 0 sinon. Régresser <code>sportif</code> sur <code>etudes</code>. Interpréter la constante et le coefficient de la modalité « Supérieur ». Retrouve-t-on les résultats du TP4 ?</p></li>
-<li><p>Ajouter l’âge, puis le sexe au modèle. Comment évolue le coefficient de « Supérieur » ? Que peut-on conclure sur le lien entre études et pratique sportive ?</p></li>
+<li><p>Former un groupe de deux ou trois. Lire le <code>readme.md</code> de deux ou trois jeux de données qui intéressent le groupe, puis en choisir un.</p></li>
+<li><p>Avant d’ouvrir les données dans R, lister trois à cinq questions que ce jeu de données pourrait permettre de traiter.</p></li>
+<li><p>Retenir une question principale, et la découper en deux ou trois sous-questions. Pourquoi est-elle intéressante ? Quelles variables faut-il pour y répondre ? Quelle réponse attendez-vous ?</p></li>
+<li><p>Importer les données avec <code>read_csv()</code>, en copiant l’adresse donnée dans la rubrique <em>The Data</em> du <code>readme.md</code>, puis en enregistrer une copie dans le dossier <code>data</code> avec <code>write_csv()</code> et <code>here()</code>.</p></li>
 </ol>
 </section>
-<section id="application-la-courbe-de-kuznets-environnementale" class="level2">
-<h2 class="anchored" data-anchor-id="application-la-courbe-de-kuznets-environnementale">4. Application : la courbe de Kuznets environnementale</h2>
-<p>Selon l’hypothèse de la <strong>courbe de Kuznets environnementale</strong> (Grossman et Krueger, 1995), la pollution augmente avec le niveau de vie aux premiers stades du développement, puis diminue au-delà d’un certain revenu, grâce aux changements de structure productive, aux technologies plus propres et à la demande de qualité environnementale. La relation entre émissions et revenu prendrait la forme d’un U inversé :</p>
-<p><span class="math display">\[co2\_hab_i = \beta_0 + \beta_1 pib\_hab_i + \beta_2 pib\_hab_i^2 + u_i\]</span></p>
-<p>avec <span class="math inline">\(\beta_1 &gt; 0\)</span> et <span class="math inline">\(\beta_2 &lt; 0\)</span>. Le revenu à partir duquel les émissions diminuent est alors <span class="math inline">\(pib^* = -\beta_1 / (2 \beta_2)\)</span>. On teste cette hypothèse en coupe transversale sur les pays du monde en 2022, avec les données d’Our World in Data utilisées aux TP2 et TP3.</p>
+<section id="décrire-les-données" class="level2">
+<h2 class="anchored" data-anchor-id="décrire-les-données">2. Décrire les données</h2>
+<p>Avant de répondre à la question, il faut savoir ce que mesurent les données et vérifier qu’elles permettent d’y répondre.</p>
 <ol type="i">
-<li><p>Copier dans le dossier <code>data</code> les fichiers <code>owid-co2-data.csv</code> et <code>continents.csv</code> des TP précédents. Construire un tableau <code>co2_2022</code> qui contient les pays (rattachés à un continent) en 2022, avec le PIB par habitant en milliers de dollars (<code>pib_hab</code>), son carré (<code>pib_hab2</code>) et les émissions par habitant, en retirant les observations manquantes.</p></li>
-<li><p>Estimer le modèle linéaire <code>co2_per_capita ~ pib_hab</code>. Interpréter le coefficient et le <span class="math inline">\(R^2\)</span>.</p></li>
-<li><p>Estimer le modèle quadratique ci-dessus. Les signes et la significativité des coefficients sont-ils compatibles avec une courbe de Kuznets ?</p></li>
-<li><p>Représenter le nuage de points avec la courbe estimée : <code>geom_smooth(method = "lm", formula = y ~ x + I(x^2))</code>. Quel pays se distingue ? Ré-estimer le modèle quadratique sans ce pays et calculer <span class="math inline">\(pib^*\)</span>. Combien de pays ont un PIB par habitant supérieur à <span class="math inline">\(pib^*\)</span> ? Que conclure sur la robustesse du résultat ?</p></li>
-<li><p>Estimer le modèle en log-log : <span class="math inline">\(\log(co2\_hab) = \beta_0 + \beta_1 \log(pib\_hab) + u\)</span>. Interpréter <span class="math inline">\(\beta_1\)</span>. Ajouter le carré de <span class="math inline">\(\log(pib\_hab)\)</span> et calculer le revenu de retournement correspondant, <span class="math inline">\(\exp(-\beta_1 / (2 \beta_2))\)</span>. Commenter.</p></li>
-<li><p>Au vu de ces résultats, peut-on conclure que la croissance économique finira par réduire les émissions de CO2 ? Discuter au moins trois limites de cette analyse.</p></li>
+<li><p>Qui a produit ces données, et comment ont-elles été collectées ? S’appuyer sur le <code>readme.md</code> et sur les liens qu’il donne.</p></li>
+<li><p>Afficher la structure du tableau avec <code>glimpse()</code>. Que représente une ligne ? Combien y a-t-il d’observations, sur quelle période et sur quel champ ?</p></li>
+<li><p>Construire le tableau de description des variables utiles à la question (nom, description en français, unité), au format Markdown.</p></li>
+<li><p>Compter les valeurs manquantes de chaque variable avec <code>summarise()</code> et <code>across()</code>, et repérer les anomalies (valeurs impossibles, unités différentes selon les lignes, lignes de total). Les données permettent-elles de répondre à la question ? Sinon, reformuler la question.</p></li>
+</ol>
+</section>
+<section id="répondre-à-la-question" class="level2">
+<h2 class="anchored" data-anchor-id="répondre-à-la-question">3. Répondre à la question</h2>
+<p>Chaque sous-question reçoit sa réponse sous la forme d’un tableau ou d’un graphique, choisi selon la nature des variables (TP3 et TP4) : distribution d’une variable, comparaison entre groupes, évolution dans le temps, relation entre deux variables.</p>
+<ol type="i">
+<li><p>Pour chaque sous-question, produire le tableau ou le graphique qui y répond le plus directement. Les tableaux s’affichent avec <code>knitr::kable()</code>.</p></li>
+<li><p>Soigner les graphiques : axes avec leurs unités, source des données (<code>labs(caption = ...)</code>), police lisible (<code>theme_minimal(base_size = 16)</code>).</p></li>
+<li><p>Écrire la réponse à chaque sous-question en une phrase, appuyée sur un chiffre. Le résultat correspond-il à ce que vous attendiez ?</p></li>
+<li><p>Quelles sont les limites des données pour répondre à la question ? Quelles nouvelles questions les résultats soulèvent-ils ?</p></li>
+</ol>
+</section>
+<section id="préparer-les-slides" class="level2">
+<h2 class="anchored" data-anchor-id="préparer-les-slides">4. Préparer les slides</h2>
+<p>Les slides suivent le plan de l’analyse, en trois parties :</p>
+<ol type="1">
+<li><strong>La question</strong> : la question principale, les sous-questions, et pourquoi elles sont intéressantes ;</li>
+<li><strong>Les données</strong> : source, ce que représente une ligne, période, nombre d’observations, variables utilisées ;</li>
+<li><strong>Les résultats</strong> : une slide par sous-question, avec un tableau ou un graphique, et un titre qui donne la réponse.</li>
+</ol>
+<p>Quarto produit des slides au format HTML avec <code>format: revealjs</code> : chaque titre de niveau 2 (<code>##</code>) commence une nouvelle slide. Dans l’en-tête, <code>echo: false</code> masque le code de tous les chunks, et <code>embed-resources: true</code> produit un fichier HTML autonome. Modèle de document :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "La question principale"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Prénom Nom, Prénom Nom, Prénom Nom"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">  revealjs:</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">    embed-resources: true</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: false</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">  message: false</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>donnees <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"nom_du_fichier.csv"</span>))</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## La question</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Question principale et sous-questions</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Pourquoi elles sont intéressantes</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## Les données</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Source : ...</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Une ligne correspond à ...</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`r nrow(donnees)`</span> observations, de ... à ...</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="fu">## Un titre qui donne la réponse</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(donnees) <span class="sc">+</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">x =</span> ..., <span class="at">y =</span> ...)) <span class="sc">+</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"..."</span>, <span class="at">y =</span> <span class="st">"..."</span>, <span class="at">caption =</span> <span class="st">"Source : ..."</span>) <span class="sc">+</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">16</span>)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<ol type="i">
+<li><p>Créer le document <code>code/TP5_slides.qmd</code> à partir de ce modèle et le compiler. Ouvrir le fichier HTML produit dans un navigateur : les flèches du clavier permettent de passer d’une slide à l’autre.</p></li>
+<li><p>Rédiger cinq à sept slides en suivant le plan question, données, résultats. Le titre de chaque slide de résultat donne la réponse (« Dix producteurs émettent 60 % du total ») plutôt que le contenu (« Graphique 2 »).</p></li>
+<li><p>Relire les slides en se mettant à la place du public : la question est-elle claire ? Chaque résultat y répond-il ? Supprimer ce qui n’y répond pas.</p></li>
 </ol>
 </section>
 <section id="rendu" class="level2">
 <h2 class="anchored" data-anchor-id="rendu">5. Rendu</h2>
-<p>Compiler le document complet. Il doit se compiler sans erreur après un redémarrage de R (<code>Session &gt; Restart R</code>). Déposer le fichier <code>TP5.html</code> sur CEL.</p>
+<p>Compiler les slides. Le document doit se compiler sans erreur après un redémarrage de R (<code>Session &gt; Restart R</code>). Un membre du groupe dépose le fichier <code>TP5_slides.html</code> sur CEL, après avoir indiqué le nom de tous les membres du groupe dans l’en-tête YAML (<code>author</code>).</p>
 
 
 </section>
@@ -1039,8 +1070,8 @@ window.Quarto = {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./CMI-SIG-intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text">Introduction</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./CMI-LSE-TP6.html" class="pagination-link" aria-label="TP6 : Modèles de régression linéaire">
+        <span class="nav-page-text">TP6 : Modèles de régression linéaire</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
